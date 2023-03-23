@@ -61,16 +61,16 @@ Suppose we want to track the position of our drone at time ```t```. Our GPS and 
 
 
 
-### 1.4 Prediction Model
+### 1.4 Model: Prediction
 
 
-### 1.6 External Influence
+### 1.6 Model: External Influence
 
 
-### 1.7 External Uncertainty
+### 1.7 Model: External Uncertainty
 
 
-### 1.8 Measurement Estimate
+### 1.8 Measurement: Noise & Estimate
 
 
 ### 1.9 Final Equation
