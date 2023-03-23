@@ -40,14 +40,28 @@ Let's see at examples of why we may need Kalman Filters.
 
 **Example 2**: Suppose we want to track the location of our drone at a specific time ```t```. We may use the a **GPS** to do so but the precision may differ based on the number of satellites available and other factors. We may use the onboard **IMU** sensor to deduce the distance travelled but our sensor can be ```noisy```. So what we can so is to ```fuse``` both sensors measurements to find the optimal estimate of the exact location of our drone. That is, we use Kalman Filter when we want to find ```the best estimate of states by combining measurements from various sensors in the presence of noise```.
 
+### 1.3 The States
+Kalman Filter (KF) are ideal for systems which are ```continuously changing```. Why? Because KF keep only the ```previous state``` hence, they are fast and well-suited for ```real-time problems```. 
 
-### 1.3 The Advantages
+So what is this ```"state"``` term? The state is the **underlying configuration** of our system. It can be the ```position```, ```velocity```, ```volume```, ```temperature``` and so on of our system. We will take example of our drone which has two states: **position** and **velocity**. And it will be represented in a ```state vector```. 
+
+Now that we know what are states, let's define the steps of a KF. In a nutshell, KF can be expressed in a two-step process: **prediction** and **correction** which provides an ```optimal state estimate```.
+
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227108866-4f18f449-f8af-4810-b50e-c3602dadd754.png" width="450" height="250"/>
+</p>
+
+Suppose we want to track the position of our drone at time ```t```. Our GPS and other sensors have **noise** hence, will not provide an accurate result. But what if we can provide a ```mathematical model``` of our system. With Newton's Equation of Motion we can predict at time ```t+1``` what will be the position of our drone using its velocity. However, this will be a flawed model as we are not taking into account **external factors** such as wind resistance, snow, rain and so on. Hence, this is a ```flawed model```. In summary we have a sensor with **uncertainty** and a mathematical model with its own **uncertainty**. What if we could **combine both**? And that is exactly what the Kalman Filter does:
+
+- The Kalman Filter will combine ```measurements``` from a **noisy sensor** and the ```prediction``` of a **flawed model** to get a more ```accurate estimate``` of the system state than either one **independently**.
+
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227113149-0d790863-03fb-4999-bba0-47fa75e27359.png" width="750" height="350"/>
+</p>
 
 
-### 1.4 The States
 
-
-### 1.5 Prediction Model
+### 1.4 Prediction Model
 
 
 ### 1.6 External Influence
@@ -83,13 +97,14 @@ Let's see at examples of why we may need Kalman Filters.
 
 ## References
 
-1. https://www.youtube.com/watch?v=mwn8xhgNpFY&list=PLn8PRpmsu08pzi6EMiYnR-076Mh-q3tWr&ab_channel=MATLAB
-2. https://www.mathworks.com/videos/series/understanding-kalman-filters.html
-3. https://arshren.medium.com/an-easy-explanation-of-kalman-filter-ec2ccb759c46
-4. https://www.youtube.com/watch?v=CaCcOwJPytQ&list=PLX2gX-ftPVXU3oUFNATxGXY90AULiqnWT&ab_channel=MichelvanBiezen
-5. https://www.kalmanfilter.net/default.aspx
-6. https://www.alanzucconi.com/2022/07/24/kalman-filter-3/
-7. 
+1. https://engineeringmedia.com/controlblog/the-kalman-filter
+2. https://www.youtube.com/watch?v=mwn8xhgNpFY&list=PLn8PRpmsu08pzi6EMiYnR-076Mh-q3tWr&ab_channel=MATLAB
+3. https://www.mathworks.com/videos/series/understanding-kalman-filters.html
+4. https://arshren.medium.com/an-easy-explanation-of-kalman-filter-ec2ccb759c46
+5. https://www.youtube.com/watch?v=CaCcOwJPytQ&list=PLX2gX-ftPVXU3oUFNATxGXY90AULiqnWT&ab_channel=MichelvanBiezen
+6. https://www.kalmanfilter.net/default.aspx
+7. https://www.alanzucconi.com/2022/07/24/kalman-filter-3/
+8. 
 
 
 
