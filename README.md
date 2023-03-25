@@ -59,6 +59,8 @@ Suppose we want to track the position of our drone at time ```t```. Our GPS and 
   <img src= "https://user-images.githubusercontent.com/59663734/227113149-0d790863-03fb-4999-bba0-47fa75e27359.png" width="750" height="350"/>
 </p>
 
+- The Kalman Filter determines how much weight to apply to both states - measured and predicted - such that the corrected state is placed exactly at the optimal location between the two.
+
 
 
 ### 1.4 Model: Prediction
