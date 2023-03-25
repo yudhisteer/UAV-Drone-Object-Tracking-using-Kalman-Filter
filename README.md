@@ -59,11 +59,86 @@ Suppose we want to track the position of our drone at time ```t```. Our GPS and 
   <img src= "https://user-images.githubusercontent.com/59663734/227113149-0d790863-03fb-4999-bba0-47fa75e27359.png" width="750" height="350"/>
 </p>
 
-- The Kalman Filter determines how much weight to apply to both states - measured and predicted - such that the corrected state is placed exactly at the optimal location between the two.
+- The Kalman Filter computes the ideal **weightage** for the ```measured``` and ```predicted``` states, so that the resulting ```corrected state``` is positioned precisely at the **optimal** location between them.
 
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227746239-7e4262ad-888f-48b6-9125-4ee5175449a6.png" width="800" height="340"/>
+</p>
+
+Note that we do not know what is the **actual** positon and velocity due to the uncertainties. But we do know that there is a whole range of possible combinaties that may be true.
+ 
+ One important **assumption** of KF is that it expect our variables to be ```random``` and ```Gaussian``` distributed. Hence, if we denote our variables using a state vector ```x```:
+ 
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227746812-5be18f7e-769a-4a39-b55a-2fa9c413bc73.png"/>
+</p>
+
+Then, each variable has a **mean** and a **variance** such that:
+
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227746364-6a3ae6c7-2dee-450f-8fd8-7a46737f29ba.png"/>
+</p>
+
+Note that the variables may be **correlated**. For example, here, position and velocity are correlated as a higher velocity expects to give a higher position. Hence, this correlation is captured in a **covariance matrix**:
+
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227746761-aaab051f-fdfc-4d8b-9f97-545dbe6529f0.png"/>
+</p>
+
+A positive covariance indicates that the variables tend to increase or decrease together, while a negative covariance indicates that as one variable increases, the other tends to decrease.
 
 
 ### 1.4 Model: Prediction
+
+We will denote our current state as ```k-1``` and the next state we will predict as ```k```. 
+Our best estimate at the current time step ```k-1``` will be:
+
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227747266-59082f7d-d8a2-4f49-9c68-86cfe47cd4b7.png"/>
+</p>
+
+And the next best estimate at time step ```k``` will be:
+
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227747207-9b564ab0-63ed-4f52-88dc-30b717f3cdbe.png"/>
+</p>
+
+Again, we do not know which state is the actual one, even the initial state has uncertainty, hence, our prediction model will output a new distribution after working on all the possible values.
+
+Let's try to predict the position and velocity at the next time step.
+Assuming a **constant velocity** (zero acceleration) scenario, therefore:
+
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227747109-04108abd-1013-43b7-9ff1-b5403b91abcd.png"/>
+</p>
+
+We use Newton's Equation of Motion, to predict the position as such:
+
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227747129-368580dd-6157-4778-a16b-d3f29e17aadd.png"/>
+</p>
+
+The two last equations can be written in matric form as such:
+
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227747447-bb159a4d-2056-4d67-a5f0-8b82748ba1b4.png"/>
+</p>
+
+Re-writting again with ![CodeCogsEqn (13)](https://user-images.githubusercontent.com/59663734/227747531-e7627dec-8a96-4afb-b979-f4534a56b60c.png) being the **State Transition Matrix**.:
+
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227747509-3f158e8d-33aa-4af4-9c0c-3031ca8a865d.png"/>
+</p>
+
+
+
+
+
+
+
+
+
+
 
 
 ### 1.6 Model: External Influence
@@ -100,13 +175,14 @@ Suppose we want to track the position of our drone at time ```t```. Our GPS and 
 ## References
 
 1. https://engineeringmedia.com/controlblog/the-kalman-filter
-2. https://www.youtube.com/watch?v=mwn8xhgNpFY&list=PLn8PRpmsu08pzi6EMiYnR-076Mh-q3tWr&ab_channel=MATLAB
-3. https://www.mathworks.com/videos/series/understanding-kalman-filters.html
-4. https://arshren.medium.com/an-easy-explanation-of-kalman-filter-ec2ccb759c46
-5. https://www.youtube.com/watch?v=CaCcOwJPytQ&list=PLX2gX-ftPVXU3oUFNATxGXY90AULiqnWT&ab_channel=MichelvanBiezen
-6. https://www.kalmanfilter.net/default.aspx
-7. https://www.alanzucconi.com/2022/07/24/kalman-filter-3/
-8. 
+2. https://www.bzarg.com/p/how-a-kalman-filter-works-in-pictures/
+3. https://www.youtube.com/watch?v=mwn8xhgNpFY&list=PLn8PRpmsu08pzi6EMiYnR-076Mh-q3tWr&ab_channel=MATLAB
+4. https://www.mathworks.com/videos/series/understanding-kalman-filters.html
+5. https://arshren.medium.com/an-easy-explanation-of-kalman-filter-ec2ccb759c46
+6. https://www.youtube.com/watch?v=CaCcOwJPytQ&list=PLX2gX-ftPVXU3oUFNATxGXY90AULiqnWT&ab_channel=MichelvanBiezen
+7. https://www.kalmanfilter.net/default.aspx
+8. https://www.alanzucconi.com/2022/07/24/kalman-filter-3/
+9. 
 
 
 
