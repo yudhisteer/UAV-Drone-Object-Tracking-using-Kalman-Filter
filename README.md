@@ -132,12 +132,12 @@ Re-writting again with ![CodeCogsEqn (13)](https://user-images.githubusercontent
 
 The State Transition Matrix propagates the state at sample ```k-1```to the state sample ```k```. 
 
-Now we need to propagate the error covariance forward. Note that uncertainty comes from 2 sources when predicting:
+Now we need to propagate the error covariance forward. Note that uncertainty comes from ```2``` sources when predicting:
 
-1. Initial uncertainty in system before prediction
-2. Additional uncertainty as we propagate the state forward in time
+    1. Initial uncertainty in system before prediction
+    2. Additional uncertainty as we propagate the state forward in time
 
-We will define the initial error first with ![CodeCogsEqn (16)](https://user-images.githubusercontent.com/59663734/227752062-7d98795d-a74d-4e2e-bf6b-900d0cd43d4d.png)
+We will define the ```initial uncertainty``` first with ![CodeCogsEqn (16)](https://user-images.githubusercontent.com/59663734/227752062-7d98795d-a74d-4e2e-bf6b-900d0cd43d4d.png)
  known as the **Prediction Error Covariance Matrix**:
 
 <p align="center">
@@ -164,7 +164,7 @@ Re-writting it in matrix form:
 ![CodeCogsEqn (19)](https://user-images.githubusercontent.com/59663734/227752417-2ce97302-ebe7-4394-a3b8-1ceea6bde07f.png) is the **control matrix** and ![CodeCogsEqn (20)](https://user-images.githubusercontent.com/59663734/227752424-7e4f1d27-6aeb-4f89-aabb-6c81dd5997e5.png) is called the **control vector**. By factoring in the system's dynamics and the effects of external controls on its future state, we can derive an estimated state projection
 
 ### 1.7 Model: External Uncertainty
-It is impossible to model every external forces (friction, air resistance,...) acting on our system. In order to counter for that, we add some new uncertainty after every prediction step. 
+It is impossible to model every external forces (friction, air resistance,...) acting on our system. In order to counter for that, we add some new uncertainty after every prediction step. We will model the **second** source of uncertainty into our system: ```uncertainty as we propagate the state forward in time```.
 
 <p align="center">
   <img src= "https://user-images.githubusercontent.com/59663734/227753050-b7eb3810-2031-4e86-9489-e7cfd6e118b9.png" width="400" height="300"/>
