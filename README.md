@@ -227,20 +227,30 @@ Note that ```P``` is rotated into the sensor frame using ```H```. As we analyze 
 - We denote the **Measurement Covariance Matrix** as ![CodeCogsEqn (28)](https://user-images.githubusercontent.com/59663734/227798527-16f6d3af-ccc8-4cb9-9c9f-1afa2ce7f1b6.png), which reflects the inherent variability and uncertainty in our sensor measurements.
 - This new distribution from our sensor readings has a **mean** represented with a vector: ![CodeCogsEqn (29)](https://user-images.githubusercontent.com/59663734/227798797-df07ef11-f407-4cc2-8a77-f08b98ed8980.png)
 
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227801851-53e36354-d682-4dae-a37d-e026bf815f6a.png" width="750" height="230"/>
+</p>
+
+From the diagram above, notice that how as we propagate further into the future our **Process Noise Covariance Matrix**, ![CodeCogsEqn (24)](https://user-images.githubusercontent.com/59663734/227754179-426ee4b2-400e-40c8-ad7f-53803289f3b0.png), grows bigger and bigger. In total, we have ```3``` error covariance matrices: ![CodeCogsEqn (33)](https://user-images.githubusercontent.com/59663734/227801696-c2b50054-c440-4c04-9300-b0da0e787fef.png), ![CodeCogsEqn (32)](https://user-images.githubusercontent.com/59663734/227801712-9bee671b-ecf0-40aa-b297-c719afb2febc.png), 
+![CodeCogsEqn (31)](https://user-images.githubusercontent.com/59663734/227801722-7d6cb918-9657-40c9-8a44-ea358e062373.png).
+
+
 To sum up, we now have ```2``` Gaussian blobs:
 
-1. One surrounding the mean of our ```transformed prediction```
-2. One surrounding the actual ```sensor reading``` we got
+1. One surrounding the mean of our ```transformed prediction``` (**green**)
+2. One surrounding the actual ```sensor reading``` we got (**pink**)
 
 
 <p align="center">
-  <img src= "https://user-images.githubusercontent.com/59663734/227799370-64d45cd1-ee83-464f-9d7a-c5de04cefb08.png" width="700" height="240"/>
+  <img src= "https://user-images.githubusercontent.com/59663734/227800213-591ff178-ef81-4605-8acd-c70dae5c57d8.png" width="700" height="270"/>
 </p>
 
-- Our next step will be to ```reconcile our guess``` about the readings we would see based on the **predicted state** with a different guess based on our **sensor readings** that we actually observe.
--  To find our new most likely state
+- _Our next step will be to ```reconcile our guess``` about the readings we would see based on the **predicted state** with a different guess based on our **sensor readings** that we actually observe_.
+-  _To find our ```new most likely state```, we simply need to **multiply** the two Gaussian distribution and the ouput will be another **Gaussian distribution** where the mean of this distribution is the configuration for which both estimates are **most likely**, and is therefore the **best guess** of the true configuration given all the information we have._
 
-
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227800582-45f60f77-d2ff-4825-88f7-ef8c8d50a86b.png" width="700" height="160"/>
+</p>
 
 
 
@@ -260,6 +270,7 @@ To sum up, we now have ```2``` Gaussian blobs:
 <p align="center">
   <img src= "https://user-images.githubusercontent.com/59663734/227095956-3c4415f1-d365-4899-ba95-85255d433a47.gif"/>
 </p>
+
 
 
 
