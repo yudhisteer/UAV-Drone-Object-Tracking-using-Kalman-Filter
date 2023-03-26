@@ -127,13 +127,24 @@ The two last equations can be written in matric form as such:
 Re-writting again with ![CodeCogsEqn (13)](https://user-images.githubusercontent.com/59663734/227747531-e7627dec-8a96-4afb-b979-f4534a56b60c.png) being the **State Transition Matrix**.:
 
 <p align="center">
-  <img src= "https://user-images.githubusercontent.com/59663734/227747509-3f158e8d-33aa-4af4-9c0c-3031ca8a865d.png"/>
+  <img src= "https://user-images.githubusercontent.com/59663734/227752027-0ef3a998-3b4e-4c60-985d-ca3956437482.png"/>
 </p>
 
+The State Transition Matrix propagates the state at sample ```k-1```to the state sample ```k```. 
 
+Now we need to propagate the error covariance forward. Note that uncertainty comes from 2 sources when predicting:
 
+1. Initial uncertainty in system before prediction
+2. Additional uncertainty as we propagate the state forward in time
 
+We will define the initial error first with ![CodeCogsEqn (16)](https://user-images.githubusercontent.com/59663734/227752062-7d98795d-a74d-4e2e-bf6b-900d0cd43d4d.png)
+ known as the **Prediction Error Covariance Matrix**:
 
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227751910-a6be1fd4-a1b4-41b0-be37-5b754f6d48f6.png"/>
+</p>
+
+Note that we use the State Transition Matrix F to propagate the initial error covariance.
 
 
 
