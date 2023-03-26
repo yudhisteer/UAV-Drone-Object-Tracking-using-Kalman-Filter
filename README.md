@@ -112,7 +112,7 @@ Assuming a **constant velocity** (zero acceleration) scenario, therefore:
   <img src= "https://user-images.githubusercontent.com/59663734/227747109-04108abd-1013-43b7-9ff1-b5403b91abcd.png"/>
 </p>
 
-We use Newton's Equation of Motion, to predict the position as such:
+We predict the position as such:
 
 <p align="center">
   <img src= "https://user-images.githubusercontent.com/59663734/227747129-368580dd-6157-4778-a16b-d3f29e17aadd.png"/>
@@ -146,14 +146,22 @@ We will define the initial error first with ![CodeCogsEqn (16)](https://user-ima
 
 Note that we use the State Transition Matrix F to propagate the initial error covariance.
 
-
-
-
-
-
-
 ### 1.6 Model: External Influence
+In the first part of our prediction model, we assumed a **constant velocity**. But that is not always the case in real-world. External forces may cause a system to accelerate. There may be changes that are not related to the state itself. Thus, we assume a **linear acceleration**.
 
+We use Newton's Equation of Motion to update our model:
+
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227752300-584aa592-68e1-42b4-9c9e-9aece1a9a3b5.png"/>
+</p>
+
+Re-writting it in matrix form:
+
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227752403-ac80ac8c-1047-4606-821a-869eb718289f.png"/>
+</p>
+
+![CodeCogsEqn (19)](https://user-images.githubusercontent.com/59663734/227752417-2ce97302-ebe7-4394-a3b8-1ceea6bde07f.png) is the **control matrix** and ![CodeCogsEqn (20)](https://user-images.githubusercontent.com/59663734/227752424-7e4f1d27-6aeb-4f89-aabb-6c81dd5997e5.png) is called the **control vector**. By factoring in the system's dynamics and the effects of external controls on its future state, we can derive an estimated state projection
 
 ### 1.7 Model: External Uncertainty
 
