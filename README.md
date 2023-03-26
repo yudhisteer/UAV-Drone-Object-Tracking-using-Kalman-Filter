@@ -164,6 +164,33 @@ Re-writting it in matrix form:
 ![CodeCogsEqn (19)](https://user-images.githubusercontent.com/59663734/227752417-2ce97302-ebe7-4394-a3b8-1ceea6bde07f.png) is the **control matrix** and ![CodeCogsEqn (20)](https://user-images.githubusercontent.com/59663734/227752424-7e4f1d27-6aeb-4f89-aabb-6c81dd5997e5.png) is called the **control vector**. By factoring in the system's dynamics and the effects of external controls on its future state, we can derive an estimated state projection
 
 ### 1.7 Model: External Uncertainty
+It is impossible to model every external forces (friction, air resistance,...) acting on our system. In order to counter for that, we add some new uncertainty after every prediction step. 
+
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227753050-b7eb3810-2031-4e86-9489-e7cfd6e118b9.png" width="400" height="300"/>
+</p>
+
+
+- Each blue point in the diagram above can be our current state though it is most likely the actual state will be at the **center** of the Gaussian blob.
+- When predicting the next time step, a new **Gaussian** blob is created whereby each new green points can be the actual predicted state.
+- Each predicted point (green) has its own Gaussian blob, i.e, when we deal with **unobserved factors** that can impact the system's performance, we treat them as random disturbances or ```noise``` with a particular **covariance matrix**.
+
+The new **Prediction Error Covariance Matrix** ![CodeCogsEqn (16)](https://user-images.githubusercontent.com/59663734/227752062-7d98795d-a74d-4e2e-bf6b-900d0cd43d4d.png) is: 
+
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227753925-5e2deb93-b4d2-477e-89da-6e194fe633e8.png"/>
+</p>
+
+
+Note that we build up the new uncertainty from the old one by adding some uncertainty from the ```environment```. This new uncertainty is **proportional** to the ```time horizon```. That is, the further we predict, the **bigger** this new uncertainty will be. So, the **Prediction Covariance Matrix** ```grows``` over time.
+
+This additional uncertainty is modelled by the **Process Noise Covariance Matrix**, ![CodeCogsEqn (24)](https://user-images.githubusercontent.com/59663734/227754179-426ee4b2-400e-40c8-ad7f-53803289f3b0.png). This matrix captures all uncertainty which we cannot model coming from unknown inputs or from the discrepancy in our predicting model.
+
+
+
+
+
+
 
 
 ### 1.8 Measurement: Noise & Estimate
