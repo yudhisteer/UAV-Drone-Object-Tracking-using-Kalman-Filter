@@ -45,13 +45,22 @@ Kalman Filter (KF) are ideal for systems which are ```continuously changing```. 
 
 So what is this ```"state"``` term? The state is the **underlying configuration** of our system. It can be the ```position```, ```velocity```, ```volume```, ```temperature``` and so on of our system. We will take example of our drone which has two states: **position** and **velocity**. And it will be represented in a ```state vector```. 
 
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227746812-5be18f7e-769a-4a39-b55a-2fa9c413bc73.png"/>
+</p>
+
 Now that we know what are states, let's define the steps of a KF. In a nutshell, KF can be expressed in a two-step process: **prediction** and **correction** which provides an ```optimal state estimate```.
 
 <p align="center">
   <img src= "https://user-images.githubusercontent.com/59663734/227108866-4f18f449-f8af-4810-b50e-c3602dadd754.png" width="450" height="250"/>
 </p>
 
-Suppose we want to track the position of our drone at time ```t```. Our GPS and other sensors have **noise** hence, will not provide an accurate result. But what if we can provide a ```mathematical model``` of our system. With Newton's Equation of Motion we can predict at time ```t+1``` what will be the position of our drone using its velocity. However, this will be a flawed model as we are not taking into account **external factors** such as wind resistance, snow, rain and so on. Hence, this is a ```flawed model```. In summary we have a sensor with **uncertainty** and a mathematical model with its own **uncertainty**. What if we could **combine both**? And that is exactly what the Kalman Filter does:
+Suppose we want to track the position of our drone at time ```t```. Our GPS and other sensors have **noise** hence, will not provide an accurate result. But what if we can provide a ```mathematical model``` of our system. With Newton's Equation of Motion we can predict at time ```t+1``` what will be the position of our drone using its velocity. However, this will be a flawed model as we are not taking into account **external factors** such as wind resistance, snow, rain and so on. Hence, this is a ```flawed model```. In summary we have a sensor with **uncertainty** and a mathematical model with its own **uncertainty**. What if we could **combine both**? And that is exactly what the Kalman Filter does.
+
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227795840-0f3e94db-1ad8-4a7b-8364-c68bc89abf0e.png" width="460" height="150"/>
+</p>
+
 
 - The Kalman Filter will combine ```measurements``` from a **noisy sensor** and the ```prediction``` of a **flawed model** to get a more ```accurate estimate``` of the system state than either one **independently**.
 
@@ -67,13 +76,7 @@ Suppose we want to track the position of our drone at time ```t```. Our GPS and 
 
 Note that we do not know what is the **actual** positon and velocity due to the uncertainties. But we do know that there is a whole range of possible combinaties that may be true.
  
- One important **assumption** of KF is that it expect our variables to be ```random``` and ```Gaussian``` distributed. Hence, if we denote our variables using a state vector ```x```:
- 
-<p align="center">
-  <img src= "https://user-images.githubusercontent.com/59663734/227746812-5be18f7e-769a-4a39-b55a-2fa9c413bc73.png"/>
-</p>
-
-Then, each variable has a **mean** and a **variance** such that:
+ One important **assumption** of KF is that it expect our variables to be ```random``` and ```Gaussian``` distributed. Hence, if we denote our variables using a state vector ```x```. Each variable has a **mean** and a **variance** such that:
 
 <p align="center">
   <img src= "https://user-images.githubusercontent.com/59663734/227746364-6a3ae6c7-2dee-450f-8fd8-7a46737f29ba.png"/>
@@ -89,6 +92,10 @@ A positive covariance indicates that the variables tend to increase or decrease 
 
 
 ### 1.4 Model: Prediction
+
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227795937-6a3f48d5-ff84-4220-a872-cba57fad5ff4.png" width="460" height="140"/>
+</p>
 
 We will denote our current state as ```k-1``` and the next state we will predict as ```k```. 
 Our best estimate at the current time step ```k-1``` will be:
@@ -196,12 +203,14 @@ To sum up:
 </p>
 
 
-
-
-
-
-
 ### 1.8 Measurement: Noise & Estimate
+Recall that the Kalman Filter will combine measurements from a **noisy sensor** and the **prediction of a flawed model** to get a more accurate estimate of the system state than either one independently. What we have done since now is building a mathematical model in order to predict the next state of our system. What we will do now, is take readings from our sensor in order to get a ```measurement estimate```.
+
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227795993-e89ba02b-17eb-4c05-95d2-46638e337fbe.png" width="460" height="140"/>
+</p>
+
+
 
 
 ### 1.9 Final Equation
