@@ -186,6 +186,14 @@ Note that we build up the new uncertainty from the old one by adding some uncert
 
 This additional uncertainty is modelled by the **Process Noise Covariance Matrix**, ![CodeCogsEqn (24)](https://user-images.githubusercontent.com/59663734/227754179-426ee4b2-400e-40c8-ad7f-53803289f3b0.png). This matrix captures all uncertainty which we **cannot** model coming from ```unknown inputs``` or from the **discrepancy** in our ```predicting model```.
 
+To sum up:
+
+1. The new best estiate is a prediction model from the previous best estimate  ```+``` a correction for known external influences.
+2. The new uncertainty is predicted from the old uncertainty ```+``` additional uncertainty from the environment.
+
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227754762-ebf90ab8-24a4-4b3c-ae62-68a56cdfb1f3.png"/>
+</p>
 
 
 
