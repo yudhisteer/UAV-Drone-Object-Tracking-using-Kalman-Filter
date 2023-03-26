@@ -210,6 +210,47 @@ Recall that the Kalman Filter will combine measurements from a **noisy sensor** 
   <img src= "https://user-images.githubusercontent.com/59663734/227795993-e89ba02b-17eb-4c05-95d2-46638e337fbe.png" width="460" height="140"/>
 </p>
 
+When we buy a sensor, the manufacturer tells us about the ```precision``` of the module. Precision is how close all the sensor readings are grouped to each other. When we need to measure distance using a laser for example, we cannot expect to get the same reading everytime we take a measurement with our sensor. There will be some small variations and this is due to ```random noise``` in the sensor. 
+
+One important factor is that the scale of readings from our sensor may not be of the same scale as the states we are measuring.  Hence, we’ll model the sensors with a matrix, ![CodeCogsEqn (26)](https://user-images.githubusercontent.com/59663734/227796992-96f8438a-2f93-42c1-824c-3c14ecd6bf8c.png). We can use this matrix to formulate a distribution of what our ```predicted measurement``` would be using the **next best estimate** + its **uncertainty** of our **prediction model**:
+
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227797793-e6e3b0a8-d86d-43c4-89cc-7716e0cb3c1b.png"/>
+</p>
+
+Note that ```P``` is rotated into the sensor frame using ```H```. As we analyze a reading, we can make an educated guess about the state of our system. However, due to the presence of uncertainty, some states have a greater probability of producing the observed reading than others.
+
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227798246-3e2e5cd5-d754-468f-9359-a81a1f581066.png" width="400" height="300"/>
+</p>
+
+- We denote the **Measurement Covariance Matrix** as ![CodeCogsEqn (28)](https://user-images.githubusercontent.com/59663734/227798527-16f6d3af-ccc8-4cb9-9c9f-1afa2ce7f1b6.png), which reflects the inherent variability and uncertainty in our sensor measurements.
+- This new distribution from our sensor readings has a **mean** represented with a vector: ![CodeCogsEqn (29)](https://user-images.githubusercontent.com/59663734/227798797-df07ef11-f407-4cc2-8a77-f08b98ed8980.png)
+
+To sum up, we now have ```2``` Gaussian blobs:
+
+1. One surrounding the mean of our ```transformed prediction```
+2. One surrounding the actual ```sensor reading``` we got
+
+
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227799370-64d45cd1-ee83-464f-9d7a-c5de04cefb08.png" width="700" height="240"/>
+</p>
+
+- Our next step will be to ```reconcile our guess``` about the readings we would see based on the **predicted state** with a different guess based on our **sensor readings** that we actually observe.
+-  To find our new most likely state
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
