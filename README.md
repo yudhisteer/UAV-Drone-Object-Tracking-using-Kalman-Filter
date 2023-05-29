@@ -90,8 +90,9 @@ Note that the variables may be **correlated**. For example, here, position and v
 
 A positive covariance indicates that the variables tend to increase or decrease together, while a negative covariance indicates that as one variable increases, the other tends to decrease.
 
+---------------------------------------
 
-### 1.4 Model: Prediction
+### 1.4 Process Model: Prediction
 
 <p align="center">
   <img src= "https://user-images.githubusercontent.com/59663734/227795937-6a3f48d5-ff84-4220-a872-cba57fad5ff4.png" width="460" height="140"/>
@@ -153,7 +154,7 @@ We will define the ```initial uncertainty``` first with ![CodeCogsEqn (16)](http
 
 Note that we use the State Transition Matrix F to propagate the initial error covariance.
 
-### 1.6 Model: External Influence
+### 1.6 Process Model: External Influence
 In the first part of our prediction model, we assumed a **constant velocity**. But that is not always the case in real-world. External forces may cause a system to accelerate. There may be changes that are not related to the state itself. Thus, we assume a **linear acceleration**.
 
 We use Newton's Equation of Motion to update our model:
@@ -170,7 +171,7 @@ Re-writting it in matrix form:
 
 ![CodeCogsEqn (19)](https://user-images.githubusercontent.com/59663734/227752417-2ce97302-ebe7-4394-a3b8-1ceea6bde07f.png) is the **control matrix** and ![CodeCogsEqn (20)](https://user-images.githubusercontent.com/59663734/227752424-7e4f1d27-6aeb-4f89-aabb-6c81dd5997e5.png) is called the **control vector**. By factoring in the system's dynamics and the effects of external controls on its future state, we can derive an estimated state projection
 
-### 1.7 Model: External Uncertainty
+### 1.7 Process Model: External Uncertainty
 It is impossible to model every external forces (friction, air resistance,...) acting on our system. In order to counter for that, we add some new uncertainty after every prediction step. We will model the **second** source of uncertainty into our system: ```uncertainty as we propagate the state forward in time```.
 
 <p align="center">
@@ -201,6 +202,8 @@ To sum up:
 <p align="center">
   <img src= "https://user-images.githubusercontent.com/59663734/227754762-ebf90ab8-24a4-4b3c-ae62-68a56cdfb1f3.png"/>
 </p>
+
+---------------------------------------
 
 
 ### 1.8 Measurement: Noise & Estimate
