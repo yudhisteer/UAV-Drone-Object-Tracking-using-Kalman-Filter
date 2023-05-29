@@ -65,7 +65,7 @@ Suppose we want to track the position of our drone at time ```t```. Our GPS and 
 - The Kalman Filter will combine ```measurements``` from a **noisy sensor** and the ```prediction``` of a **flawed model** to get a more ```accurate estimate``` of the system state than either one **independently**.
 
 <p align="center">
-  <img src= "https://user-images.githubusercontent.com/59663734/227113149-0d790863-03fb-4999-bba0-47fa75e27359.png" width="750" height="350"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/a5a161fe-b74b-43ea-acc3-7cbe5752f3da" width="750" height="390"/>
 </p>
 
 - The Kalman Filter computes the ideal **weightage** for the ```measured``` and ```predicted``` states, so that the resulting ```corrected state``` is positioned precisely at the **optimal** location between them.
