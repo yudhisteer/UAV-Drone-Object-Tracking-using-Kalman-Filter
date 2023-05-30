@@ -300,7 +300,7 @@ To sum up, we now have ```2``` Gaussian blobs:
 6. https://www.youtube.com/watch?v=CaCcOwJPytQ&list=PLX2gX-ftPVXU3oUFNATxGXY90AULiqnWT&ab_channel=MichelvanBiezen
 7. https://www.kalmanfilter.net/default.aspx
 8. https://www.alanzucconi.com/2022/07/24/kalman-filter-3/
-9. 
+9. https://machinelearningspace.com/2d-object-tracking-using-kalman-filter/
 
 
 
