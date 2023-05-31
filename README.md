@@ -17,9 +17,9 @@ In summary, our tracking system should be able to predict the motion of users or
 
 1. Basics of Kalman Filter
 
-2. Object Tracking
+2. Autonomous Car Tracking
 
-3. Object Tracking with Kalman Filter
+3. UAV Object Tracking
 
 ----------
 
@@ -456,6 +456,101 @@ The corrected estimate covariance represents the updated measure of uncertainty 
 </p>
 
 Note that ![CodeCogsEqn (42)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/1854582f-f5d7-4a19-85c6-4e05637d46f3) is less than 1 hence, ![CodeCogsEqn (43)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/aa29b71c-c649-440e-9b77-65efacacbff9) is always smaller than ![CodeCogsEqn (44)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/b817bde2-c875-499d-9f3a-b8cccfccc74a). This way we reduce uncertainty in the estimates and improve accuracy.
+
+
+## 2. Autonomous Car Tracking
+
+We will now code our Kalman Filter from scratch. We start with a KalmanFilter class and define the following parameters in the __ init __ function:
+
+```python
+class KalmanFilter(object):
+    def __init__(self, dt, INIT_POS_STD, INIT_VEL_STD, ACCEL_STD, GPS_POS_STD):
+        
+        """
+        :param dt: sampling time (time for 1 cycle)
+        :param INIT_POS_STD: initial position standard deviation in x-direction
+        :param INIT_VEL_STD: initial position standard deviation in y-direction
+        :param ACCEL_STD: process noise magnitude
+        :param GPS_POS_STD: standard deviation of the measurement
+        """
+```
+
+We do not know our initial state hence, we declare it as zero values:
+
+```python
+        # Intial State
+        self.x = np.zeros((4, 1))
+```
+
+We want to initialize our covariance matrix based on the standard deviation of the posittion and velocity as such:
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/de54bf5a-0334-41bf-bebe-ace2f746222e"/>
+</p>
+
+```python
+        # State Estimate Covariance Matrix
+        cov = np.zeros((4, 4))
+        cov[0, 0] = INIT_POS_STD ** 2
+        cov[1, 1] = INIT_POS_STD ** 2
+        cov[2, 2] = INIT_VEL_STD ** 2
+        cov[3, 3] = INIT_VEL_STD ** 2
+        self.P = cov
+```
+
+The state transition matrix:
+
+```python
+        # State Transition Matrix
+        self.F = np.array([[1, 0, self.dt, 0],
+                           [0, 1, 0, self.dt],
+                           [0, 0, 1, 0],
+                           [0, 0, 0, 1]])
+```
+
+Next we define the process model noise using the covariance of the process model noise and the process model noise sensitivity matrix:
+
+```python
+        # Covariance of Process model noise
+        q = np.zeros((2, 2))
+        q[0, 0] = ACCEL_STD ** 2
+        q[1, 1] = ACCEL_STD ** 2
+        self.q = q
+
+        # Process Model Sensitivity Matrix
+        L = np.zeros((4, 2))
+        L[0, 0] = 0.5 * self.dt ** 2
+        L[1, 1] = 0.5 * self.dt ** 2
+        L[2, 0] = self.dt
+        L[3, 1] = self.dt
+        self.L = L
+
+        # Process model noise
+        self.Q = np.dot(self.L, np.dot(self.q, (self.L).T))
+```
+
+Lastly, we want to define our Measurement matrix and the Measurement covariance matrix:
+
+```python
+        # Define Measurement Mapping Matrix
+        self.H = np.array([[1, 0, 0, 0],
+                           [0, 1, 0, 0]])
+
+        # Measurement Covariance Matrix
+        R = np.zeros((2, 2))
+        R[0, 0] = GPS_POS_STD ** 2
+        R[1, 1] = GPS_POS_STD ** 2
+        self.R = R
+```
+
+
+
+
+
+
+
+
+
 
 
 <p align="center">
