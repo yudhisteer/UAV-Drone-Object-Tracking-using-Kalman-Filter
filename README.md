@@ -343,18 +343,55 @@ To sum up, we now have ```2``` Gaussian blobs:
 </p>
 
 
+### 1.9 Gaussian Multiplication
+As explained above, if we multiply two Gaussian distributions, our output will still be a Gaussian distribution. We will have something like this:
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/b33d0a4a-2668-4ad0-acf5-a158637a38b5"/>
+</p>
+
+After some simplication, our new mean can be expressed as:
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/c1a93fa9-9363-4d8a-9036-ef3732f51fc5"/>
+</p>
+
+and the new variance as:
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/8fd766b8-32e1-4857-8b1a-e419aa0b5140"/>
+</p>
+
+We can factor out ```k``` where k: 
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/eb60dce7-33ee-449f-80db-90909ba1f6c4"/>
+</p>
+Hence, re-writing the new mean and new covariance:
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/8491bc45-1e0a-4592-bb7a-0e571aaa2be0"/>
+</p>
+
+Re-wrting them in matrix form:
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/211b102d-53c8-4571-a7f8-f4ca1d44eb76"/>
+</p>
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/9ba37c3f-981d-44af-a50f-37bedd0cd1a5"/>
+</p>
+
+Note that ```K``` is the **Kalman Gain** which is the ```ratio``` of the covariance of the predicted state estimate to the sum of the covariance of the predicted state estimate and the covariance of the measurement. 
+
+The Kalman gain ratio plays a crucial role in determining the **weight** given to the current measurement and the predicted state estimate during the update step of the Kalman filter. It represents the relative importance of the measurement in adjusting the state estimate. 
+
+- A **higher** Kalman gain ratio means that the ```measurement``` has a **larger influence** on the updated state estimate.
+- A **lower** ratio indicates a greater reliance on the ```predicted state estimate```.
 
 
-
-
-
-
-
-
-
-
-
-### 1.9 Final Equation
+### 2.0 Putting all together
 
 
 <p align="center">
@@ -365,12 +402,6 @@ To sum up, we now have ```2``` Gaussian blobs:
 
 
 
-
-
-
---------------
-
-## 2. Object Tracking
 
 
 
