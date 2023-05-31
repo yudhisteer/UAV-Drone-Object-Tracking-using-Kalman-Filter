@@ -543,19 +543,52 @@ Lastly, we want to define our Measurement matrix and the Measurement covariance 
         self.R = R
 ```
 
+The **predict()** function projects the current state estimate ![CodeCogsEqn (46)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/39d341e8-aeb8-4aaa-856b-ae24e42f5756) and error covariance ![CodeCogsEqn (48)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/03e7b0c4-f539-4b19-bb50-e3931ff4cf9d) forward to the next time step. It calculates the predicted state estimate ![CodeCogsEqn (47)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/f0c29a9a-98f6-4991-8705-560e3301259f) and the predicted error covariance ![CodeCogsEqn (49)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/0a5e354c-1b00-4ebc-9233-3c991dc9522b)  using the state transition matrix ```F``` and the process noise covariance matrix ```Q```. This step is crucial for updating the state estimate based on the system dynamics and accounting for the uncertainty introduced by the process noise.
 
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227752027-0ef3a998-3b4e-4c60-985d-ca3956437482.png"/>
+</p>
 
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227753925-5e2deb93-b4d2-477e-89da-6e194fe633e8.png"/>
+</p>
 
+```python
+    # PREDICTION STEP
+    def predict(self):
+        self.x = np.dot(self.F, self.x)
+        self.P = np.dot(self.F, np.dot(self.P, (self.F).T)) + self.Q
+        return self.x
+```
 
+In the **update function**, we calculate the Kalman gain ![CodeCogsEqn (50)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/3c6bd5db-d304-453f-8b2b-b3b0b4298b37) and use it to update the predicted state estimate  ![CodeCogsEqn (47)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/f0c29a9a-98f6-4991-8705-560e3301259f) and predicted error covariance ![CodeCogsEqn (49)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/0a5e354c-1b00-4ebc-9233-3c991dc9522b) . This step involves incorporating the measurement information and adjusting the state estimate based on the measurement residuals and the measurement noise covariance matrix ```R```. By applying the Kalman gain, we obtain an improved estimate of the true state, taking into account both the predicted state and the available measurement information.
 
+```python
+    # UPDATE STEP
+    def update(self, z):
+        # Innovation
+        z_hat = np.dot(self.H, self.x)
+        self.y = z - z_hat
 
+        # Innovation Covariance
+        self.S = np.dot(self.H, np.dot(self.P, (self.H).T)) + self.R
 
+        # Kalman Gain
+        self.K = np.dot(self.P, np.dot((self.H).T, np.linalg.inv(self.S)))
+
+        I = np.eye(4)
+
+        self.x = self.x + np.dot(self.K, self.y)
+        self.P = np.dot((I - np.dot(self.K, self.H)), self.P)
+        return self.x
+```
 
 
 
 <p align="center">
   <img src= "https://user-images.githubusercontent.com/59663734/227095956-3c4415f1-d365-4899-ba95-85255d433a47.gif"/>
 </p>
+
 
 
 
