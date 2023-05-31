@@ -110,6 +110,22 @@ Note that the variables may be **correlated**. For example, here, position and v
 
 A positive covariance indicates that the variables tend to increase or decrease together, while a negative covariance indicates that as one variable increases, the other tends to decrease.
 
+- The Kalman filter works by propagating the mean and covariance of the Gaussian distributions for the estimated state through time using a **linear process model**. This is known as the prediction step or process update, where the estimates move forward in time.
+
+- When measurements are available, which are a linear combination of the state, the Kalman filter updates the estimated state's mean and covariance based on the the measurements' mean and covariance of the Gaussian distribution. This is the update step or corrections step for the Kalman filter.
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/be184cda-d18e-4a59-9a2a-dc5f38022697" width="800" height="540"/>
+</p>
+
+- These two processes form the prediction and correction step, which is recursively run in the filter with time. The estimates are propagated forward in time to the current time.
+If the measurements information are available at the current time, it is used to improve the current state estimates. This is then repeated as time moves forward, 
+
+
+
+
+
+
 ---------------------------------------
 
 ### 1.4 Process Model: Prediction
@@ -131,6 +147,13 @@ And the next best estimate at time step ```k``` will be:
   <img src= "https://user-images.githubusercontent.com/59663734/227747207-9b564ab0-63ed-4f52-88dc-30b717f3cdbe.png"/>
 </p>
 
+In we expand our state vector to represent a 2D model:
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/b0b1b999-9bb3-4cbb-8ad0-c446de7b57a8"/>
+</p>
+
+
 Again, we do not know which state is the actual one, even the initial state has uncertainty, hence, our prediction model will output a new distribution after working on all the possible values.
 
 Let's try to predict the position and velocity at the next time step.
@@ -151,6 +174,14 @@ The two last equations can be written in matric form as such:
 <p align="center">
   <img src= "https://user-images.githubusercontent.com/59663734/227747447-bb159a4d-2056-4d67-a5f0-8b82748ba1b4.png"/>
 </p>
+
+In 2D:
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/9918f6e3-e3e8-4043-8fe9-2343a280b86f"/>
+</p>
+
+
 
 Re-writting again with ![CodeCogsEqn (13)](https://user-images.githubusercontent.com/59663734/227747531-e7627dec-8a96-4afb-b979-f4534a56b60c.png) being the **State Transition Matrix**.:
 
@@ -189,7 +220,21 @@ Re-writting it in matrix form:
   <img src= "https://user-images.githubusercontent.com/59663734/227752403-ac80ac8c-1047-4606-821a-869eb718289f.png"/>
 </p>
 
+In 2D:
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/4146e349-28d6-45f5-b7a6-9b9e5811bf5c"/>
+</p>
+
 ![CodeCogsEqn (19)](https://user-images.githubusercontent.com/59663734/227752417-2ce97302-ebe7-4394-a3b8-1ceea6bde07f.png) is the **control matrix** and ![CodeCogsEqn (20)](https://user-images.githubusercontent.com/59663734/227752424-7e4f1d27-6aeb-4f89-aabb-6c81dd5997e5.png) is called the **control vector**. By factoring in the system's dynamics and the effects of external controls on its future state, we can derive an estimated state projection
+
+
+
+
+
+
+
+
 
 ### 1.7 Process Model: External Uncertainty
 It is impossible to model every external forces (friction, air resistance,...) acting on our system. In order to counter for that, we add some new uncertainty after every prediction step. We will model the **second** source of uncertainty into our system: ```uncertainty as we propagate the state forward in time```.
