@@ -228,8 +228,13 @@ In 2D:
 
 ![CodeCogsEqn (19)](https://user-images.githubusercontent.com/59663734/227752417-2ce97302-ebe7-4394-a3b8-1ceea6bde07f.png) is the **control matrix** and ![CodeCogsEqn (20)](https://user-images.githubusercontent.com/59663734/227752424-7e4f1d27-6aeb-4f89-aabb-6c81dd5997e5.png) is called the **control vector**. By factoring in the system's dynamics and the effects of external controls on its future state, we can derive an estimated state projection
 
+However, when we do external tracking we may not know about this input vector. Instead of having a known deterministic input, we assume that the input is just going to be due to noise. Hence, we replace ![CodeCogsEqn (15)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/de6a1811-6b9f-4df3-b4a1-9ce51385deca) with ![CodeCogsEqn (16)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/df4326fe-678a-4716-a9da-dd4528bfea6a) which is the Process Model Noise Sensiivity Matrix and the Process Model Noise vector respectively.
 
+We then have:
 
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/f0ad5f39-89af-476e-9d64-c6f66fd8ae6d"/>
+</p>
 
 
 
@@ -254,6 +259,23 @@ The new **Prediction Error Covariance Matrix** ![CodeCogsEqn (16)](https://user-
   <img src= "https://user-images.githubusercontent.com/59663734/227753925-5e2deb93-b4d2-477e-89da-6e194fe633e8.png"/>
 </p>
 
+where:
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/638eef6a-0fda-4527-b787-664a7e42c9a3"/>
+</p>
+
+where 
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/65421fdd-c41e-481b-a668-b1e132381092"/>
+</p>
+
+ and 
+ 
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/0d0013b5-73f3-478e-b64c-dc28a997665a"/>
+</p>
 
 Note that we build up the new uncertainty from the old one by adding some uncertainty from the ```environment```. This new uncertainty is **proportional** to the ```time horizon```. That is, the further we predict, the **bigger** this new uncertainty will be. So, the **Prediction Covariance Matrix** ```grows``` over time.
 
