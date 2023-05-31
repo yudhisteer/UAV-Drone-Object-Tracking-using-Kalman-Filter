@@ -40,6 +40,26 @@ Let's see at examples of why we may need Kalman Filters.
 
 **Example 2**: Suppose we want to track the location of our drone at a specific time ```t```. We may use the a **GPS** to do so but the precision may differ based on the number of satellites available and other factors. We may use the onboard **IMU** sensor to deduce the distance travelled but our sensor can be ```noisy```. So what we can so is to ```fuse``` both sensors measurements to find the optimal estimate of the exact location of our drone. That is, we use Kalman Filter when we want to find ```the best estimate of states by combining measurements from various sensors in the presence of noise```.
 
+```To put it simply, our aim is to determine the current state of the system by considering both its underlying dynamics and the presence of imperfect measurements.```
+
+### 1.3 Types of Kalman Filter
+
+ #### Linear Kalman Filter
+ 
+ 
+ #### Extenden Kalman Filter
+ 
+ 
+ 
+ #### Unscented Kalman Filter
+
+
+
+
+
+
+
+
 ### 1.3 The States
 Kalman Filter (KF) are ideal for systems which are ```continuously changing```. Why? Because KF keep only the ```previous state``` hence, they are fast and well-suited for ```real-time problems```. 
 
@@ -49,10 +69,10 @@ So what is this ```"state"``` term? The state is the **underlying configuration*
   <img src= "https://user-images.githubusercontent.com/59663734/227746812-5be18f7e-769a-4a39-b55a-2fa9c413bc73.png"/>
 </p>
 
-Now that we know what are states, let's define the steps of a KF. In a nutshell, KF can be expressed in a two-step process: **prediction** and **correction** which provides an ```optimal state estimate```.
+Now that we know what are states, let's define the steps of a KF. In a nutshell, KF can be expressed in a two-step process: **prediction** and **update** which provides an ```optimal state estimate```.
 
 <p align="center">
-  <img src= "https://user-images.githubusercontent.com/59663734/227108866-4f18f449-f8af-4810-b50e-c3602dadd754.png" width="450" height="250"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/1c7657df-7f67-46e3-9f1e-5d9352449fcb" width="750" height="250"/>
 </p>
 
 Suppose we want to track the position of our drone at time ```t```. Our GPS and other sensors have **noise** hence, will not provide an accurate result. But what if we can provide a ```mathematical model``` of our system. With Newton's Equation of Motion we can predict at time ```t+1``` what will be the position of our drone using its velocity. However, this will be a flawed model as we are not taking into account **external factors** such as wind resistance, snow, rain and so on. Hence, this is a ```flawed model```. In summary we have a sensor with **uncertainty** and a mathematical model with its own **uncertainty**. What if we could **combine both**? And that is exactly what the Kalman Filter does.
