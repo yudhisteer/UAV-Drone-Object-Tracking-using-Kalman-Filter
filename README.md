@@ -417,6 +417,8 @@ The Kalman Gain is then defined as:
   <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/75a036ef-5707-4ed1-b2f0-d3cd0147162a"/>
 </p>
 
+Let's define some more terms.
+
 #### Innovation Residual
 The innovation residual in epresents the discrepancy between the predicted measurement and the actual measurement.
 
@@ -453,7 +455,7 @@ The corrected estimate covariance represents the updated measure of uncertainty 
   <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/d03d3c24-fd56-4d63-881b-fc8a17b49912"/>
 </p>
 
-
+Note that ![CodeCogsEqn (42)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/1854582f-f5d7-4a19-85c6-4e05637d46f3) is less than 1 hence, ![CodeCogsEqn (43)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/aa29b71c-c649-440e-9b77-65efacacbff9) is always smaller than ![CodeCogsEqn (44)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/b817bde2-c875-499d-9f3a-b8cccfccc74a). This way we reduce uncertainty in the estimates and improve accuracy.
 
 
 <p align="center">
