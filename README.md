@@ -458,7 +458,7 @@ The corrected estimate covariance represents the updated measure of uncertainty 
 Note that ![CodeCogsEqn (42)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/1854582f-f5d7-4a19-85c6-4e05637d46f3) is less than 1 hence, ![CodeCogsEqn (43)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/aa29b71c-c649-440e-9b77-65efacacbff9) is always smaller than ![CodeCogsEqn (44)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/b817bde2-c875-499d-9f3a-b8cccfccc74a). This way we reduce uncertainty in the estimates and improve accuracy.
 
 
-## 2. Autonomous Car Tracking
+## 2. Kalman Filter Implementation
 
 We will now code our Kalman Filter from scratch. We start with a KalmanFilter class and define the following parameters in the __ init __ function:
 
@@ -592,7 +592,9 @@ In the **update function**, we calculate the Kalman gain ![CodeCogsEqn (50)](htt
         return self.x
 ```
 
-Now we need to test if our implementattion really works. Consider an autonomous vehicle starting at position (0,0) travelling at a constant speed of 5 m/s with a heading of 45 degrees. We have a GPS tracking the x and y position of the vehicle.
+## 3. Autonomous Vehicle Tracking
+
+Now we need to test if our implementation really works. Consider an autonomous vehicle starting at position ```(0,0)``` travelling at a constant speed of ```5 m/s``` with a heading of ```45``` degrees. We have a GPS tracking the x and y position of the vehicle.
 
 ```python
 # Car parameters
@@ -659,7 +661,7 @@ If we plot the true position and the measurements we have something like this:
   <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/89d11fae-8d67-434a-9073-a25d437f8872"/>
 </p>
 
-We then plot our filtered or estimates states. We observe that initially our estimated states follow more the GPS measurements. But with time, it converge to the true value even when the GPS measurements is off by a lot as indicated wit hthe yellow arrows.
+We then plot our filtered or estimates states. We observe that initially our estimated states follow more the GPS measurements. But with time, it converges close to the true value even when the GPS measurements is off by a lot as indicated with the yellow arrows.
 
 <p align="center">
   <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/0c86db7d-c5b0-43f2-8f86-74bc293ffbb9"/>
