@@ -13,13 +13,18 @@ In summary, our tracking system should be able to predict the motion of users or
 ## Abstract
 
 
+
+----------
+
 ## Plan of Action
 
 1. Basics of Kalman Filter
 
-2. Autonomous Car Tracking
+2. Kalman Filter Implementation
 
-3. UAV Object Tracking
+3. Autonomous Car Tracking
+
+4. UAV Object Tracking
 
 ----------
 
@@ -43,22 +48,32 @@ Let's see at examples of why we may need Kalman Filters.
 ```To put it simply, our aim is to determine the current state of the system by considering both its underlying dynamics and the presence of imperfect measurements.```
 
 ### 1.3 Types of Kalman Filter
+The choice of the filter depends on the specific characteristics of the system being modeled and the accuracy requirements of the application. In some cases, it may be necessary to perform experiments or simulations to determine which filter performs best for a given situation.
 
  #### Linear Kalman Filter
+
+- Assumes the system dynamics and measurement models are linear.
+- Updates the state estimate and covariance directly using linear equations.
+- Suitable for systems that can be accurately represented by linear models.
+- Widely used in applications such as tracking, navigation, and control systems.
  
  
  #### Extenden Kalman Filter
- 
+
+- Extends the linear Kalman filter to handle nonlinear system dynamics and/or measurement models.
+- Approximates the nonlinear models using a first-order Taylor series expansion.
+- Requires calculating Jacobian matrices for nonlinear models.
+- Used when the system dynamics or measurements exhibit nonlinear behavior.
+- Commonly used in applications such as robotics, autonomous vehicles, and aerospace systems.
  
  
  #### Unscented Kalman Filter
 
-
-
-
-
-
-
+- Overcomes the need for linearization in the EKF by using a deterministic sampling-based approach.
+- Represents the probability distribution of the state using a set of sigma points.
+- Propagates these sigma points through the nonlinear functions to estimate the mean and covariance of the state.
+- More accurate than the EKF for highly nonlinear systems.
+- Suitable for applications where the system dynamics are highly nonlinear and/or the EKF fails to provide accurate results due to significant nonlinearities in the system.
 
 ### 1.4 The States
 Kalman Filter (KF) are ideal for systems which are ```continuously changing```. Why? Because KF keep only the ```previous state``` hence, they are fast and well-suited for ```real-time problems```. 
