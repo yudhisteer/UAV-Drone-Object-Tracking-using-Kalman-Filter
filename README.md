@@ -563,6 +563,15 @@ The **predict()** function projects the current state estimate ![CodeCogsEqn (46
 
 In the **update function**, we calculate the Kalman gain ![CodeCogsEqn (50)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/3c6bd5db-d304-453f-8b2b-b3b0b4298b37) and use it to update the predicted state estimate  ![CodeCogsEqn (47)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/f0c29a9a-98f6-4991-8705-560e3301259f) and predicted error covariance ![CodeCogsEqn (49)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/0a5e354c-1b00-4ebc-9233-3c991dc9522b) . This step involves incorporating the measurement information and adjusting the state estimate based on the measurement residuals and the measurement noise covariance matrix ```R```. By applying the Kalman gain, we obtain an improved estimate of the true state, taking into account both the predicted state and the available measurement information.
 
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/7bd7bd68-d264-4249-a7f8-02ea9a70be65"/>
+</p>
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/d03d3c24-fd56-4d63-881b-fc8a17b49912"/>
+</p>
+
+
 ```python
     # UPDATE STEP
     def update(self, z):
@@ -582,6 +591,90 @@ In the **update function**, we calculate the Kalman gain ![CodeCogsEqn (50)](htt
         self.P = np.dot((I - np.dot(self.K, self.H)), self.P)
         return self.x
 ```
+
+Now we need to test if our implementattion really works. Consider an autonomous vehicle starting at position (0,0) travelling at a constant speed of 5 m/s with a heading of 45 degrees. We have a GPS tracking the x and y position of the vehicle.
+
+```python
+# Car parameters
+initial_position = np.array([0, 0])
+speed = 5.0  # m/s
+heading = 45.0  # degrees
+
+# Convert heading to radians
+heading_rad = math.radians(heading)
+```
+
+We calculate the true positions based on constant speed and heading and using a Gaussian distribution to generate the measurements.
+
+```python
+# Calculate true positions based on constant speed and heading
+true_positions = [initial_position]
+for _ in range(num_measurements-1):
+    delta_x = speed * math.cos(heading_rad)
+    delta_y = speed * math.sin(heading_rad)
+    new_position = true_positions[-1] + np.array([delta_x, delta_y])
+    true_positions.append(new_position)
+true_positions = np.array(true_positions).T
+
+# Add noise to simulate measurement errors
+measurement_noise_std = 5
+measurements = true_positions + np.random.normal(0, measurement_noise_std, size=true_positions.shape)
+```
+We define the Kalman Filter parameters as such:
+
+```python
+# Kalman filter parameters
+dt = 1.0  # Sampling time
+INIT_POS_STD = 10  # Initial position standard deviation
+INIT_VEL_STD = 10  # Initial velocity standard deviation
+ACCEL_STD = 5  # Acceleration standard deviation
+GPS_POS_STD = 3  # Measurement position standard deviation
+```
+We then apply the Kalman filter to calculate the estimated states:
+
+```python
+# Kalman filter initialization
+kf = KalmanFilter(dt, INIT_POS_STD, INIT_VEL_STD, ACCEL_STD, GPS_POS_STD)
+
+# Lists to store filtered states
+filtered_states = []
+
+# Perform prediction and update steps for each measurement
+for measurement in measurements.T:
+    # Prediction step
+    predicted_state = kf.predict()
+
+    # Update step
+    updated_state = kf.update(measurement)
+
+    # Store the filtered state
+    filtered_states.append(updated_state)
+
+# Convert filtered states to numpy array
+filtered_states = np.array(filtered_states).T
+```
+If we plot the true position and the measurements we have something like this:
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/89d11fae-8d67-434a-9073-a25d437f8872"/>
+</p>
+
+We then plot our filtered or estimates states. We observe that initially our estimated states follow more the GPS measurements. But with time, it converge to the true value even when the GPS measurements is off by a lot as indicated wit hthe yellow arrows.
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/0c86db7d-c5b0-43f2-8f86-74bc293ffbb9"/>
+</p>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
