@@ -87,7 +87,7 @@ So what is this ```"state"``` term? The state is the **underlying configuration*
 Now that we know what are states, let's define the steps of a KF. In a nutshell, KF can be expressed in a two-step process: **prediction** and **update** which provides an ```optimal state estimate```.
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/1c7657df-7f67-46e3-9f1e-5d9352449fcb" width="750" height="250"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/41983836-99b6-4c10-97af-b79439b2957e" width="750" height="250"/>
 </p>
 
 Suppose we want to track the position of our drone at time ```t```. Our GPS and other sensors have **noise** hence, will not provide an accurate result. But what if we can provide a ```mathematical model``` of our system. With Newton's Equation of Motion we can predict at time ```t+1``` what will be the position of our drone using its velocity. However, this will be a flawed model as we are not taking into account **external factors** such as wind resistance, snow, rain and so on. Hence, this is a ```flawed model```. In summary we have a sensor with **uncertainty** and a mathematical model with its own **uncertainty**. What if we could **combine both**? And that is exactly what the Kalman Filter does.
@@ -472,6 +472,11 @@ The corrected estimate covariance represents the updated measure of uncertainty 
 </p>
 
 Note that ![CodeCogsEqn (42)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/1854582f-f5d7-4a19-85c6-4e05637d46f3) is less than 1 hence, ![CodeCogsEqn (43)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/aa29b71c-c649-440e-9b77-65efacacbff9) is always smaller than ![CodeCogsEqn (44)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/b817bde2-c875-499d-9f3a-b8cccfccc74a). This way we reduce uncertainty in the estimates and improve accuracy.
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/586c2d31-9403-44b7-905f-5c4aa8c94be0" width="700" height="400"/>
+</p>
+
 
 
 ## 2. Kalman Filter Implementation
