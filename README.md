@@ -417,16 +417,41 @@ The Kalman Gain is then defined as:
   <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/75a036ef-5707-4ed1-b2f0-d3cd0147162a"/>
 </p>
 
+#### Innovation Residual
+The innovation residual in epresents the discrepancy between the predicted measurement and the actual measurement.
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/3efab851-d076-4aac-aec0-e986afd84b24"/>
+</p>
+
+#### Innovation Covariance
+The innovation covariance represents the measure of uncertainty in the prediction error between the estimated measurement and the actual measurement.
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/ae485230-ae2b-4dfc-bdfa-5fe10cd4781a"/>
+</p>
+
+#### Kalman Gain
+The Kalman gain determines the optimal weight given to the predicted state and the measurement to obtain an improved state estimate.
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/2cf5f6e3-f744-4bc6-be6d-6e16a9d8812a"/>
+</p>
 
 
+#### Corrected State Estimate
+The corrected state estimate  is the updated estimation of the true state, obtained by combining the predicted state estimate with the measurement using the Kalman gain.
 
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/7bd7bd68-d264-4249-a7f8-02ea9a70be65"/>
+</p>
 
+#### Corrected Estimate Covariance
+The corrected estimate covariance represents the updated measure of uncertainty in the estimated state after incorporating the measurement information. It reflects the accuracy of the corrected state estimate.
 
-
-
-
-
-
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/d03d3c24-fd56-4d63-881b-fc8a17b49912"/>
+</p>
 
 
 
