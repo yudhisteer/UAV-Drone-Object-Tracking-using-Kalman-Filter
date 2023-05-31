@@ -60,7 +60,7 @@ Let's see at examples of why we may need Kalman Filters.
 
 
 
-### 1.3 The States
+### 1.4 The States
 Kalman Filter (KF) are ideal for systems which are ```continuously changing```. Why? Because KF keep only the ```previous state``` hence, they are fast and well-suited for ```real-time problems```. 
 
 So what is this ```"state"``` term? The state is the **underlying configuration** of our system. It can be the ```position```, ```velocity```, ```volume```, ```temperature``` and so on of our system. We will take example of our drone which has two states: **position** and **velocity**. And it will be represented in a ```state vector```. 
@@ -128,7 +128,7 @@ If the measurements information are available at the current time, it is used to
 
 ---------------------------------------
 
-### 1.4 Process Model: Prediction
+### 1.5 Process Model: Prediction
 
 <p align="center">
   <img src= "https://user-images.githubusercontent.com/59663734/227795937-6a3f48d5-ff84-4220-a872-cba57fad5ff4.png" width="460" height="140"/>
@@ -390,6 +390,7 @@ The Kalman gain ratio plays a crucial role in determining the **weight** given t
 - A **higher** Kalman gain ratio means that the ```measurement``` has a **larger influence** on the updated state estimate.
 - A **lower** ratio indicates a greater reliance on the ```predicted state estimate```.
 
+---------------------------------
 
 ### 2.0 Putting all together
 We have 2 Gaussian distributions: one for the process model and another for the meausrements:
@@ -591,6 +592,7 @@ In the **update function**, we calculate the Kalman gain ![CodeCogsEqn (50)](htt
         self.P = np.dot((I - np.dot(self.K, self.H)), self.P)
         return self.x
 ```
+----------------------------
 
 ## 3. Autonomous Vehicle Tracking
 
@@ -667,27 +669,53 @@ We then plot our filtered or estimates states. We observe that initially our est
   <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/0c86db7d-c5b0-43f2-8f86-74bc293ffbb9"/>
 </p>
 
+Now, we will test our filter using the simulation created by Dr. Steven Dumble in his online course. It is using the same Kalman Filter we designed above but here we used C++. 
 
+
+**1. ACCEL_STD = 0**
+
+- The position and velocity uncertainty starts to the true value.
+- The estimates are going to use the information contained inside the process model and converge to the truth.
+- However, this won't work if we have a more dynamic system where the car changes directon abruptly.
+- By having zero process model noise, the filter is going to become inconsistent because the estimated position is not close to the true position.
 
 https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/2cb3ad18-936e-40b3-aad6-cc4a09fa07b3
 
 
 
+**2. ACCEL_STD = 0.1**
+
+- As prediction happens, the uncertainty inside the system is inflating.
+- When the car changes direction, the estimated state catches up with the true state a lot quicker than it did when we had zero process model uncertainty.
+- Notice that now, we have lots of jumping around with the estimates because the amount of uncertainty in the system is growing quite rapidly.
+- That is, the estimates are going to rely on the GPS measurements more than the process model.
 
 https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/b37db33b-afd0-4ed7-8e20-f53497420e38
 
 
 
 
+**3. ACCEL_STD = 1.0**
 
-
+- We a higher ACCEL_STD, we have a larer uncertainty growth with time.
+- The estimate catches up quicker with the true state in the corners.
+- The state estimates follow the GPS measurements a lot more. It is going to trust them a lot more because it got less uncertainty inside the prediction model.
 
 https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/91f12a56-d636-40cf-8d76-d1de009173c6
 
+In summary:
 
+1. **GPS_std** directly affects the size of ```R```, however **Acc_std** affects the ```Rate Of Increase in P``` (not directly the size of P). If **Acc_std** is ```large```, then ```P``` will grow quickly, so that when a new GPS measurement is made, the value of ```P will be greater than R```. Therefore, the system will trust the GPS more, since ```R is smaller than P```.
 
+2. If we want a nice smooth response that trusts the prediction model more, we want a lower noise value for the acceleration. (Lower Q)
 
+3. However, if the car changes direction a lot and we want the process model to try to keep up, we are going to need aa larger acceleration standard deviation to let the filter update quickly for the new response. (Higher Q)
 
+4. We assumed the inital state to be zero however, we would also have waited for the first measurement. Either way, the Linear Kalman Filter will always be updating to minimize the estimation error. 
+
+------------------------
+
+## 4. UAV Object Tracking
 
 
 
