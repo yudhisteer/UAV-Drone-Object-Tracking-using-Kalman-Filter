@@ -392,6 +392,43 @@ The Kalman gain ratio plays a crucial role in determining the **weight** given t
 
 
 ### 2.0 Putting all together
+We have 2 Gaussian distributions: one for the process model and another for the meausrements:
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/12eab8cf-021a-41cc-912e-a08c22beea9c"/>
+</p>
+
+
+
+The new mean for our new Gaussian distribution is then:
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/d839e51b-674e-4d72-b1ad-dfc2e8db4d6b"/>
+</p>
+And the new covariance is: 
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/e7e9aada-d795-43a1-8379-1e1e693387b3"/>
+</p>
+
+The Kalman Gain is then defined as:
+
+<p align="center">
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/75a036ef-5707-4ed1-b2f0-d3cd0147162a"/>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <p align="center">
