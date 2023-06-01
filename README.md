@@ -7,7 +7,8 @@ The drone is already equipped with a range of sensors such as  a```Lidar```, a `
 
 While computer vision-based tracking algorithms have been widely used, it's important to consider the challenges posed by urban delivery environments. In city settings, the presence of obstructions such as trees, electric poles, and buildings can hinder the effectiveness of computer vision alone. Additionally, the dynamic nature of urban environments introduces a multitude of moving objects that need to be accounted for. To ensure safe and reliable operations, it is crucial for our tracking system to be capable of accurately detecting and tracking not only stationary objects but also individuals or animals approaching the drone's landing position, as they pose a significant risk of collision with the drone or the package it carries.
 
-https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/8fd6dc9d-2e75-4e52-bf7d-e8813c3ee278
+
+https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/185ab3fe-8e05-4ea2-8f97-edfbec99ddea
 
 
 ## Abstract
