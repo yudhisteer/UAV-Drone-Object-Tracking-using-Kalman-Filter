@@ -431,7 +431,7 @@ The Kalman Gain is then defined as:
 Let's define some more terms.
 
 #### Innovation Residual
-The innovation residual in epresents the discrepancy between the predicted measurement and the actual measurement.
+The innovation residual represents the discrepancy between the predicted measurement and the actual measurement.
 
 <p align="center">
   <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/196760eb-9eb8-4af1-9c6a-f011f8c9cde3"/>
