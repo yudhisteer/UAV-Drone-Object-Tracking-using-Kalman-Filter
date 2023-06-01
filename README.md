@@ -466,7 +466,7 @@ The corrected estimate covariance represents the updated measure of uncertainty 
 Note that ![CodeCogsEqn (42)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/1854582f-f5d7-4a19-85c6-4e05637d46f3) is less than 1 hence, ![CodeCogsEqn (43)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/aa29b71c-c649-440e-9b77-65efacacbff9) is always smaller than ![CodeCogsEqn (44)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/b817bde2-c875-499d-9f3a-b8cccfccc74a). This way we reduce uncertainty in the estimates and improve accuracy.
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/586c2d31-9403-44b7-905f-5c4aa8c94be0" width="700" height="400"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/17e02f15-763e-4197-b39b-cd1a76f29c9e" width="700" height="400"/>
 </p>
 
 
