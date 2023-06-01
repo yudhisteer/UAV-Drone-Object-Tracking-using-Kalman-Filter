@@ -405,26 +405,25 @@ The Kalman gain ratio plays a crucial role in determining the **weight** given t
 We have 2 Gaussian distributions: one for the process model and another for the meausrements:
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/12eab8cf-021a-41cc-912e-a08c22beea9c"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/fde466c2-ea4c-43e0-b51b-052bf34435b9"/>
 </p>
-
-
 
 The new mean for our new Gaussian distribution is then:
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/d839e51b-674e-4d72-b1ad-dfc2e8db4d6b"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/ba23389f-1371-4281-bda3-1dc957c49735"/>
 </p>
+              
 And the new covariance is: 
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/e7e9aada-d795-43a1-8379-1e1e693387b3"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/5d1c030e-cc51-4137-a99a-4c15397d5754"/>
 </p>
 
 The Kalman Gain is then defined as:
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/75a036ef-5707-4ed1-b2f0-d3cd0147162a"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/bf44caa6-7f9c-426e-bc26-ee3fc396ab9b"/>
 </p>
 
 Let's define some more terms.
@@ -433,21 +432,21 @@ Let's define some more terms.
 The innovation residual in epresents the discrepancy between the predicted measurement and the actual measurement.
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/3efab851-d076-4aac-aec0-e986afd84b24"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/196760eb-9eb8-4af1-9c6a-f011f8c9cde3"/>
 </p>
 
 #### Innovation Covariance
 The innovation covariance represents the measure of uncertainty in the prediction error between the estimated measurement and the actual measurement.
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/ae485230-ae2b-4dfc-bdfa-5fe10cd4781a"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/ca3b5f4e-5ed1-4ea5-a03f-f2ca795e797a"/>
 </p>
 
 #### Kalman Gain
 The Kalman gain determines the optimal weight given to the predicted state and the measurement to obtain an improved state estimate.
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/2cf5f6e3-f744-4bc6-be6d-6e16a9d8812a"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/4f00c69b-2eca-4ce2-b531-2135e7a82349"/>
 </p>
 
 
@@ -455,17 +454,18 @@ The Kalman gain determines the optimal weight given to the predicted state and t
 The corrected state estimate  is the updated estimation of the true state, obtained by combining the predicted state estimate with the measurement using the Kalman gain.
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/7bd7bd68-d264-4249-a7f8-02ea9a70be65"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/cff16101-694a-4f29-aba5-0869eca5d39e"/>
 </p>
 
 #### Corrected Estimate Covariance
 The corrected estimate covariance represents the updated measure of uncertainty in the estimated state after incorporating the measurement information. It reflects the accuracy of the corrected state estimate.
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/d03d3c24-fd56-4d63-881b-fc8a17b49912"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/f30e9af1-6bc1-4d68-8185-32eb745d11cf"/>
 </p>
 
-Note that ![CodeCogsEqn (42)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/1854582f-f5d7-4a19-85c6-4e05637d46f3) is less than 1 hence, ![CodeCogsEqn (43)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/aa29b71c-c649-440e-9b77-65efacacbff9) is always smaller than ![CodeCogsEqn (44)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/b817bde2-c875-499d-9f3a-b8cccfccc74a). This way we reduce uncertainty in the estimates and improve accuracy.
+Note that ![242158558-1854582f-f5d7-4a19-85c6-4e05637d46f3](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/08a5e1c9-ea36-4576-be39-81c50fb7f9ef)
+ is less than 1 hence, ![242158606-aa29b71c-c649-440e-9b77-65efacacbff9](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/76038d21-fcdb-4d2c-9679-e02110e21aff) is always smaller than ![242158773-b817bde2-c875-499d-9f3a-b8cccfccc74a](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/539547ac-7e73-42de-997f-700aae5a32af). This way we reduce uncertainty in the estimates and improve accuracy.
 
 <p align="center">
   <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/17e02f15-763e-4197-b39b-cd1a76f29c9e" width="700" height="400"/>
