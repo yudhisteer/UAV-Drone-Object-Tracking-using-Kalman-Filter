@@ -11,7 +11,7 @@ https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/asse
 
 
 ## Abstract
-
+This project involved designing and implementing a linear Kalman filter from scratch to track both stationary objects and moving entities, such as individuals or animals, near the drone's landing position. Real-world testing demonstrated the filter's effectiveness in providing accurate position and velocity estimates, reducing the risk of collision. However, limitations were observed in handling non-linear dynamics and uncertainties. It was concluded that non-linear Kalman filters, like the Extended Kalman Filter or Unscented Kalman Filter, would be more suitable for complex scenarios. Further research on non-linear Kalman filters is recommended to improve tracking accuracy and robustness in dynamic environments.
 
 
 ----------
@@ -738,12 +738,14 @@ In summary:
 ## 4. UAV Object Tracking
 Kalman filters are used to track the positions and velocities of objects of interest, such as other vehicles, pedestrians, or stationary obstacles. By fusing data from different sensors, such as cameras, the filter estimates the object's state with high accuracy, even in the presence of sensor noise or measurement uncertainties. This tracking information is crucial for collision avoidance as it allows the drone to perceive the current and future positions of objects in its environment.
 
+In this scenario, we do not want to track the drone but instead people or animals approaching the drone's landing position. This is important because these moving objects can potentially collide with the drone or the package it is carrying as shown below.
+
 <p align="center">
   <img src= "https://user-images.githubusercontent.com/59663734/227095956-3c4415f1-d365-4899-ba95-85255d433a47.gif"/>
 </p>
 
 
-Using YOLOv8, we will get the bounding box of the region of interest and concecutively its center. We will used the centers as GPS Measurements that we had in the simulation before. We will still use the Process Model we designed and update our estimates based on the center of the bounding boxes. 
+Using ```YOLOv8```, we will get the bounding box of the region of interest and consecutively its **center**. We will used the centers as GPS Measurements that we had in the simulation before. We will still use the same Process Model we designed and update our estimates based on the center of the bounding boxes. 
 
 ```python
   # Process the frame to get bounding box centers
@@ -797,10 +799,11 @@ By increasing the ACCEL_STD to a high value, we rely much more on the detector t
 
 https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/59bbe596-be85-4b60-a6f7-6310d459c1b0
 
+### Conclusion
 
+In conclusion, the implementation of a ```linear Kalman filter``` in our project has proven to be instrumental in achieving accurate and reliable tracking of both stationary objects and moving entities, such as individuals or animals, near the drone's landing position. By continuously estimating their position, the Kalman filter enables us to anticipate and respond to potential collision risks effectively. This capability is crucial in urban environments where obstructions and dynamic elements pose challenges to the drone's path. With the Kalman filter, we can enhance the safety and reliability of the drone operations, mitigating the risks associated with collisions and ensuring the successful delivery of packages. By combining computer vision with the Kalman filter, we have developed a robust tracking system that contributes to the overall efficiency and effectiveness of our delivery services.
 
-
-
+In addition, while the linear Kalman filter has provided satisfactory results, it is worth noting that more advanced tracking algorithms such as DeepSORT or ByteTrack may offer enhanced performance and robustness in scenarios with complex dynamics and uncertainties. These algorithms leverage deep learning techniques and non-linear models to handle more challenging tracking scenarios effectively. In future iterations of our project, integrating these advanced tracking algorithms could further improve our ability to track and anticipate the movements of objects and individuals, ensuring even greater safety and efficiency in drone deliveries.
 
 
 ## References
@@ -814,19 +817,4 @@ https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/asse
 7. https://www.kalmanfilter.net/default.aspx
 8. https://www.alanzucconi.com/2022/07/24/kalman-filter-3/
 9. https://machinelearningspace.com/2d-object-tracking-using-kalman-filter/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
