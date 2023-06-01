@@ -5,13 +5,9 @@ We have a scenario where we have a drone delivery packages in a a ```city```. Co
 
 The drone is already equipped with a range of sensors such as  a```Lidar```, a ```camera```, and/or ```Stereo Camera```. We will need to use these data in order to build a ```tracking system``` that will allow the drone to lower the package to the ground only when it predicts there is **no risk** of the cord being pulled. This tracking system shound be able to track people or animals which are too close to the drone's package landing position. 
 
-Building a tracking algorithm using Computer Vision is old technology these days however, one thing to keep in mind is that since the deliveries will be in cities, we may have **obstruction** by trees, electric poles, houses etc. That is, our computer vision system should be able to track the motion of a person coming towards the drone landing position even though he latter is partially obstructed by trees for example. And that is something most tracking system, such as ```YoLo```, fail to do as shown below:
-
-In summary, our tracking system should be able to predict the motion of users or animals even if it is **blocked** by some external objects and based on these predictions we will design an algorithm which will enable the drone to ```safely``` lower the package without any crash or risk to humans. 
-
+While computer vision-based tracking algorithms have been widely used, it's important to consider the challenges posed by urban delivery environments. In city settings, the presence of obstructions such as trees, electric poles, and buildings can hinder the effectiveness of computer vision alone. Additionally, the dynamic nature of urban environments introduces a multitude of moving objects that need to be accounted for. To ensure safe and reliable operations, it is crucial for our tracking system to be capable of accurately detecting and tracking not only stationary objects but also individuals or animals approaching the drone's landing position, as they pose a significant risk of collision with the drone or the package it carries.
 
 https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/44df3b47-8525-4a69-a9f3-a76c98d714fa
-
 
 
 ## Abstract
