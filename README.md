@@ -10,6 +10,10 @@ Building a tracking algorithm using Computer Vision is old technology these days
 In summary, our tracking system should be able to predict the motion of users or animals even if it is **blocked** by some external objects and based on these predictions we will design an algorithm which will enable the drone to ```safely``` lower the package without any crash or risk to humans. 
 
 
+https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/44df3b47-8525-4a69-a9f3-a76c98d714fa
+
+
+
 ## Abstract
 
 
@@ -736,8 +740,16 @@ In summary:
 ------------------------
 
 ## 4. UAV Object Tracking
+Kalman filters are used to track the positions and velocities of objects of interest, such as other vehicles, pedestrians, or stationary obstacles. By fusing data from different sensors, such as cameras, the filter estimates the object's state with high accuracy, even in the presence of sensor noise or measurement uncertainties. This tracking information is crucial for collision avoidance as it allows the drone to perceive the current and future positions of objects in its environment.
 
+Using YOLOv8, we will get the bounding box of the region of interest and concecutively its center. We will used the centers as GPS Measurements that we had in the simulation before. We will still use the Process Model we designed and update our estimates based on the center of the bounding boxes. 
 
+```python
+  # Process the frame to get bounding box centers
+    centers = get_bounding_box_center_frame(frame, model, names, object_class='person')
+```
+
+With a low value for ACCEL_STD, the estimates were not as close to the real value. I had to increase it to 40 such that the estimates now rely on the center of the bounding boxes more than the process model.
 
 
 
@@ -751,6 +763,10 @@ In summary:
 
 
 
+
+
+
+https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/f67b1de5-7b44-42dc-9ac0-1807c91453ba
 
 
 
