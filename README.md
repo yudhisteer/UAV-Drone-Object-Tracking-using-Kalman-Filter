@@ -500,7 +500,7 @@ We do not know our initial state hence, we declare it as zero values:
 We want to initialize our covariance matrix based on the standard deviation of the posittion and velocity as such:
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/de54bf5a-0334-41bf-bebe-ace2f746222e"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/a1811292-99d0-40d2-925a-8ba95655328d"/>
 </p>
 
 ```python
@@ -558,14 +558,17 @@ Lastly, we want to define our Measurement matrix and the Measurement covariance 
         self.R = R
 ```
 
-The **predict()** function projects the current state estimate ![CodeCogsEqn (46)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/39d341e8-aeb8-4aaa-856b-ae24e42f5756) and error covariance ![CodeCogsEqn (48)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/03e7b0c4-f539-4b19-bb50-e3931ff4cf9d) forward to the next time step. It calculates the predicted state estimate ![CodeCogsEqn (47)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/f0c29a9a-98f6-4991-8705-560e3301259f) and the predicted error covariance ![CodeCogsEqn (49)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/0a5e354c-1b00-4ebc-9233-3c991dc9522b)  using the state transition matrix ```F``` and the process noise covariance matrix ```Q```. This step is crucial for updating the state estimate based on the system dynamics and accounting for the uncertainty introduced by the process noise.
+The **predict()** function projects the current state estimate ![242317104-39d341e8-aeb8-4aaa-856b-ae24e42f5756](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/593f59f0-bfca-4feb-8c45-0f262ae06854)
+ and error covariance ![242317203-03e7b0c4-f539-4b19-bb50-e3931ff4cf9d](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/feff0149-69e8-457d-975e-0ec5c30c87ba)
+ forward to the next time step. It calculates the predicted state estimate ![242317580-f0c29a9a-98f6-4991-8705-560e3301259f](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/0b02e343-4ad3-4593-95e0-58528bee9743)
+ and the predicted error covariance ![242317601-0a5e354c-1b00-4ebc-9233-3c991dc9522b](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/4f93e926-c10b-4319-875f-82b4a4f166f1) using the state transition matrix ```F``` and the process noise covariance matrix ```Q```. This step is crucial for updating the state estimate based on the system dynamics and accounting for the uncertainty introduced by the process noise.
 
 <p align="center">
-  <img src= "https://user-images.githubusercontent.com/59663734/227752027-0ef3a998-3b4e-4c60-985d-ca3956437482.png"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/108af78d-e723-4a6e-9bd6-ef1f4f8fbee1"/>
 </p>
 
 <p align="center">
-  <img src= "https://user-images.githubusercontent.com/59663734/227753925-5e2deb93-b4d2-477e-89da-6e194fe633e8.png"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/915b00e4-a799-4b0d-88a4-98391ae7534f"/>
 </p>
 
 ```python
@@ -576,14 +579,14 @@ The **predict()** function projects the current state estimate ![CodeCogsEqn (46
         return self.x
 ```
 
-In the **update function**, we calculate the Kalman gain ![CodeCogsEqn (50)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/3c6bd5db-d304-453f-8b2b-b3b0b4298b37) and use it to update the predicted state estimate  ![CodeCogsEqn (47)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/f0c29a9a-98f6-4991-8705-560e3301259f) and predicted error covariance ![CodeCogsEqn (49)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/0a5e354c-1b00-4ebc-9233-3c991dc9522b) . This step involves incorporating the measurement information and adjusting the state estimate based on the measurement residuals and the measurement noise covariance matrix ```R```. By applying the Kalman gain, we obtain an improved estimate of the true state, taking into account both the predicted state and the available measurement information.
+In the **update function**, we calculate the Kalman gain ![242318987-3c6bd5db-d304-453f-8b2b-b3b0b4298b37](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/5668dd7c-c5fc-461a-a2d2-de8034272f38) and use it to update the predicted state estimate ![242317580-f0c29a9a-98f6-4991-8705-560e3301259f (1)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/72056272-756c-459c-9506-1b90de7c956d)  and predicted error covariance ![242317601-0a5e354c-1b00-4ebc-9233-3c991dc9522b (1)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/a2f31391-5e29-4bf4-bd4c-533e3a62a8f3). This step involves incorporating the measurement information and adjusting the state estimate based on the measurement residuals and the measurement noise covariance matrix ```R```. By applying the Kalman gain, we obtain an improved estimate of the true state, taking into account both the predicted state and the available measurement information.
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/7bd7bd68-d264-4249-a7f8-02ea9a70be65"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/673b81ef-01ed-476d-a6bb-a5676c554e4a"/>
 </p>
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/d03d3c24-fd56-4d63-881b-fc8a17b49912"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/01b99da5-031b-4b0c-ad1d-c398e230ba05"/>
 </p>
 
 
