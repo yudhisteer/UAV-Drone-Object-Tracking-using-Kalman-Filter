@@ -88,7 +88,7 @@ So what is this ```"state"``` term? The state is the **underlying configuration*
 Now that we know what are states, let's define the steps of a KF. In a nutshell, KF can be expressed in a two-step process: **prediction** and **update** which provides an ```optimal state estimate```.
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/41983836-99b6-4c10-97af-b79439b2957e" width="750" height="250"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/f0ed980d-9063-44d9-a8b8-6c67fe037380" width="750" height="250"/>
 </p>
 
 Suppose we want to track the position of our drone at time ```t```. Our GPS and other sensors have **noise** hence, will not provide an accurate result. But what if we can provide a ```mathematical model``` of our system. With Newton's Equation of Motion we can predict at time ```t+1``` what will be the position of our drone using its velocity. However, this will be a flawed model as we are not taking into account **external factors** such as wind resistance, snow, rain and so on. Hence, this is a ```flawed model```. In summary we have a sensor with **uncertainty** and a mathematical model with its own **uncertainty**. What if we could **combine both**? And that is exactly what the Kalman Filter does.
@@ -101,7 +101,7 @@ Suppose we want to track the position of our drone at time ```t```. Our GPS and 
 - The Kalman Filter will combine ```measurements``` from a **noisy sensor** and the ```prediction``` of a **flawed model** to get a more ```accurate estimate``` of the system state than either one **independently**.
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/a5a161fe-b74b-43ea-acc3-7cbe5752f3da" width="750" height="390"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/dc991fe4-ae3f-482f-8019-933ca8a51bc7" width="750" height="390"/>
 </p>
 
 - The Kalman Filter computes the ideal **weightage** for the ```measured``` and ```predicted``` states, so that the resulting ```corrected state``` is positioned precisely at the **optimal** location between them.
@@ -131,7 +131,7 @@ A positive covariance indicates that the variables tend to increase or decrease 
 - When measurements are available, which are a linear combination of the state, the Kalman filter updates the estimated state's mean and covariance based on the the measurements' mean and covariance of the Gaussian distribution. This is the update step or corrections step for the Kalman filter.
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/be184cda-d18e-4a59-9a2a-dc5f38022697" width="800" height="540"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/bdc9e6a8-25f9-44d2-a650-8e891263024e" width="800" height="540"/>
 </p>
 
 - These two processes form the prediction and correction step, which is recursively run in the filter with time. The estimates are propagated forward in time to the current time.
