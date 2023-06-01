@@ -742,6 +742,11 @@ In summary:
 ## 4. UAV Object Tracking
 Kalman filters are used to track the positions and velocities of objects of interest, such as other vehicles, pedestrians, or stationary obstacles. By fusing data from different sensors, such as cameras, the filter estimates the object's state with high accuracy, even in the presence of sensor noise or measurement uncertainties. This tracking information is crucial for collision avoidance as it allows the drone to perceive the current and future positions of objects in its environment.
 
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/59663734/227095956-3c4415f1-d365-4899-ba95-85255d433a47.gif"/>
+</p>
+
+
 Using YOLOv8, we will get the bounding box of the region of interest and concecutively its center. We will used the centers as GPS Measurements that we had in the simulation before. We will still use the Process Model we designed and update our estimates based on the center of the bounding boxes. 
 
 ```python
@@ -749,25 +754,52 @@ Using YOLOv8, we will get the bounding box of the region of interest and concecu
     centers = get_bounding_box_center_frame(frame, model, names, object_class='person')
 ```
 
-With a low value for ACCEL_STD, the estimates were not as close to the real value. I had to increase it to 40 such that the estimates now rely on the center of the bounding boxes more than the process model.
+With a low value for ```ACCEL_STD```, the estimates were not as close to the real value. I had to increase it to ```40``` such that the estimates now rely on the center of the bounding boxes more than the process model.
+
+We check first if there is a bounding box, if there is we perform the predict function of our Kalman Filter then we perform the update function using the center of the bounding box. We plot the value for the predict, update and the center to check how the model is performing.
 
 
+```python
+    # Check if center is detected
+    if len(centers) > 0:
+        center = centers[0]  # Extract the first center tuple
 
+        # Example: Draw circle at the center
+        if isinstance(center, tuple):
+            print("Center = ", center)
+            cv2.circle(frame, center, radius=8, color=(0, 255, 0), thickness=4) # Green
 
+            # Predict
+            x_pred, y_pred = kf.predict()
+            if isFirstFrame:  # First frame
+                x_pred = round(x_pred[0])
+                y_pred = round(y_pred[0])
+                print("Predicted: ", (x_pred, y_pred))
+                isFirstFrame = False
+            else:
+                x_pred = round(x_pred[0])
+                y_pred = round(y_pred[1])
+                print("Predicted: ", (x_pred, y_pred))
 
+            cv2.circle(frame, (x_pred, y_pred), radius=8, color=(255, 0, 0), thickness=4) #  Blue
 
-<p align="center">
-  <img src= "https://user-images.githubusercontent.com/59663734/227095956-3c4415f1-d365-4899-ba95-85255d433a47.gif"/>
-</p>
+            # Update
+            (x1, y1) = kf.update(center)
+            x_updt = round(x1[0])
+            y_updt =  round(x1[1])
+            print("Update: ", (x_updt, y_updt))
+            cv2.circle(frame, (x_updt, y_updt), radius=8, color= (0, 0, 255), thickness=4) # Red
+```
 
-
-
-
-
+Below are two examples where the object changes direction abruptly. This is a good example to see how our Linear Kalman Filter is performing on a dynamic non-linear system. We observe that there is still a discrepancy between the true value and the estimated one. This is because of the process model we are using which is a linear model. 
 
 
 https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/f67b1de5-7b44-42dc-9ac0-1807c91453ba
 
+
+By increasing the ACCEL_STD to a high value, we rely much more on the detector than our process model. This is working fine for now however, if the detector wrongly detects the position of the object then our estimates will be off from the true value as well.
+
+https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/59bbe596-be85-4b60-a6f7-6310d459c1b0
 
 
 
