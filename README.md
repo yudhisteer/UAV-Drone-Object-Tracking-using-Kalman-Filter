@@ -155,7 +155,7 @@ Our best estimate at the current time step ```k-1``` will be:
 And the next best estimate at time step ```k``` will be:
 
 <p align="center">
-  <img src= "https://user-images.githubusercontent.com/59663734/227747207-9b564ab0-63ed-4f52-88dc-30b717f3cdbe.png"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/f4696875-f649-4080-bd66-b8c9e5f6b6f1"/>
 </p>
 
 In we expand our state vector to represent a 2D model:
