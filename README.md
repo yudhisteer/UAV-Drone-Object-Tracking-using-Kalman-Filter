@@ -759,7 +759,7 @@ We check first if there is a bounding box, if there is we perform the predict fu
     if len(centers) > 0:
         center = centers[0]  # Extract the first center tuple
 
-        # Example: Draw circle at the center
+        # Draw circle at the center
         if isinstance(center, tuple):
             print("Center = ", center)
             cv2.circle(frame, center, radius=8, color=(0, 255, 0), thickness=4) # Green
