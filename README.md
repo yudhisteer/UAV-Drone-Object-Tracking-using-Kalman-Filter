@@ -669,16 +669,11 @@ for measurement in measurements.T:
 # Convert filtered states to numpy array
 filtered_states = np.array(filtered_states).T
 ```
-If we plot the true position and the measurements we have something like this:
+
+We then plot our filtered or estimated states along with the true position and the measurements. We observe that initially our estimated states follow more the GPS measurements. But with time, it converges close to the true value even when the GPS measurements is off by a lot as indicated with the yellow arrows.
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/89d11fae-8d67-434a-9073-a25d437f8872"/>
-</p>
-
-We then plot our filtered or estimates states. We observe that initially our estimated states follow more the GPS measurements. But with time, it converges close to the true value even when the GPS measurements is off by a lot as indicated with the yellow arrows.
-
-<p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/0c86db7d-c5b0-43f2-8f86-74bc293ffbb9"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/4df703f4-9b6d-45d7-a5ed-bd3d60e51940"/>
 </p>
 
 Now, we will test our filter using the simulation created by Dr. Steven Dumble in his online course. It is using the same Kalman Filter we designed above but here we used C++. 
