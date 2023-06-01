@@ -691,8 +691,8 @@ Now, we will test our filter using the simulation created by Dr. Steven Dumble i
 - However, this won't work if we have a more dynamic system where the car changes directon abruptly.
 - By having zero process model noise, the filter is going to become inconsistent because the estimated position is not close to the true position.
 
-https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/2cb3ad18-936e-40b3-aad6-cc4a09fa07b3
 
+https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/c0c84391-03b8-46ae-be5f-627c7ccf997b
 
 
 **2. ACCEL_STD = 0.1**
@@ -702,9 +702,8 @@ https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/asse
 - Notice that now, we have lots of jumping around with the estimates because the amount of uncertainty in the system is growing quite rapidly.
 - That is, the estimates are going to rely on the GPS measurements more than the process model.
 
-https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/b37db33b-afd0-4ed7-8e20-f53497420e38
 
-
+https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/306f85db-1b73-4748-949a-c3e976cd6c4d
 
 
 **3. ACCEL_STD = 1.0**
