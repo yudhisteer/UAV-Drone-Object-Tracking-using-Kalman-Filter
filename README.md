@@ -161,7 +161,7 @@ And the next best estimate at time step ```k``` will be:
 In we expand our state vector to represent a 2D model:
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/b0b1b999-9bb3-4cbb-8ad0-c446de7b57a8"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/97021005-c68a-4144-85d6-e53c77601294"/>
 </p>
 
 
@@ -189,7 +189,7 @@ The two last equations can be written in matric form as such:
 In 2D:
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/9918f6e3-e3e8-4043-8fe9-2343a280b86f"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/aeecaa91-c11d-4dfa-be4d-d39a483d1217"/>
 </p>
 
 
@@ -234,22 +234,18 @@ Re-writting it in matrix form:
 In 2D:
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/4146e349-28d6-45f5-b7a6-9b9e5811bf5c"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/9d722940-c766-414d-96cf-c6fe5ad0f7db"/>
 </p>
 
 ![CodeCogsEqn (19)](https://user-images.githubusercontent.com/59663734/227752417-2ce97302-ebe7-4394-a3b8-1ceea6bde07f.png) is the **control matrix** and ![CodeCogsEqn (20)](https://user-images.githubusercontent.com/59663734/227752424-7e4f1d27-6aeb-4f89-aabb-6c81dd5997e5.png) is called the **control vector**. By factoring in the system's dynamics and the effects of external controls on its future state, we can derive an estimated state projection
 
-However, when we do external tracking we may not know about this input vector. Instead of having a known deterministic input, we assume that the input is just going to be due to noise. Hence, we replace ![CodeCogsEqn (15)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/de6a1811-6b9f-4df3-b4a1-9ce51385deca) with ![CodeCogsEqn (16)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/df4326fe-678a-4716-a9da-dd4528bfea6a) which is the Process Model Noise Sensiivity Matrix and the Process Model Noise vector respectively.
+However, when we do external tracking we may not know about this input vector. Instead of having a known deterministic input, we assume that the input is just going to be due to noise. Hence, we replace![CodeCogsEqn (3)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/643831d6-edae-424b-9f2c-9b32010b7084) with ![CodeCogsEqn (4)](https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/5221e057-7167-447f-bf88-6acf11c39334) which is the Process Model Noise Sensiivity Matrix and the Process Model Noise vector respectively.
 
 We then have:
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/f0ad5f39-89af-476e-9d64-c6f66fd8ae6d"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/52e3e590-a253-496a-857e-42e60550d45c"/>
 </p>
-
-
-
-
 
 
 ### 1.7 Process Model: External Uncertainty
@@ -273,19 +269,19 @@ The new **Prediction Error Covariance Matrix** ![CodeCogsEqn (16)](https://user-
 where:
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/638eef6a-0fda-4527-b787-664a7e42c9a3"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/7b8f1d6e-f9ad-41b7-9292-1da2cbee9518""/>
 </p>
 
 where 
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/65421fdd-c41e-481b-a668-b1e132381092"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/96a88bec-772c-4443-8412-2d16f0b16d99"/>
 </p>
 
  and 
  
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/0d0013b5-73f3-478e-b64c-dc28a997665a"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/ef8e8f99-911c-408b-89c0-dd909cefaf4e"/>
 </p>
 
 Note that we build up the new uncertainty from the old one by adding some uncertainty from the ```environment```. This new uncertainty is **proportional** to the ```time horizon```. That is, the further we predict, the **bigger** this new uncertainty will be. So, the **Prediction Covariance Matrix** ```grows``` over time.
