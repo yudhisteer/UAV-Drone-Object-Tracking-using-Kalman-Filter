@@ -13,7 +13,7 @@ https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/asse
 ## Abstract
 This project involved designing and implementing a linear Kalman filter from scratch to track both stationary objects and moving entities, such as individuals or animals, near the drone's landing position. Real-world testing demonstrated the filter's effectiveness in providing accurate position and velocity estimates, reducing the risk of collision. However, limitations were observed in handling non-linear dynamics and uncertainties. It was concluded that non-linear Kalman filters, like the **Extended Kalman Filter** or **Unscented Kalman Filter**, would be more suitable for complex scenarios. Further research on non-linear Kalman filters is recommended to improve tracking accuracy and robustness in dynamic environments.
 
-Brian Douglas's blog, Bzarg's online tutorial, and Dr. Steven Dumble's course provided essential guidance and insights on Kalman filters and tracking algorithms. Their resources greatly influenced my understanding and implementation of the Kalman filter, enhancing the success of this project. I sincerely appreciate their valuable contributions and acknowledge their significant impact on my work.
+Brian Douglas's blog, Bzarg's online tutorial, and Dr. Steven Dumble's course provided essential guidance and insights on Kalman filters and tracking algorithms. Their resources greatly influenced my understanding and implementation of the Kalman filter, enhancing the success of this project. I sincerely appreciate their valuable contributions and acknowledge their significant impact on my work. Some of the graphs and visualization has been adapted from their work.
 
 ----------
 
@@ -136,11 +136,6 @@ A positive covariance indicates that the variables tend to increase or decrease 
 
 - These two processes form the prediction and correction step, which is recursively run in the filter with time. The estimates are propagated forward in time to the current time.
 If the measurements information are available at the current time, it is used to improve the current state estimates. This is then repeated as time moves forward, 
-
-
-
-
-
 
 ---------------------------------------
 
@@ -814,8 +809,9 @@ In addition, while the linear Kalman filter has provided satisfactory results, i
 3. https://www.youtube.com/watch?v=mwn8xhgNpFY&list=PLn8PRpmsu08pzi6EMiYnR-076Mh-q3tWr&ab_channel=MATLAB
 4. https://www.mathworks.com/videos/series/understanding-kalman-filters.html
 5. https://arshren.medium.com/an-easy-explanation-of-kalman-filter-ec2ccb759c46
-6. https://www.youtube.com/watch?v=CaCcOwJPytQ&list=PLX2gX-ftPVXU3oUFNATxGXY90AULiqnWT&ab_channel=MichelvanBiezen
-7. https://www.kalmanfilter.net/default.aspx
-8. https://www.alanzucconi.com/2022/07/24/kalman-filter-3/
-9. https://machinelearningspace.com/2d-object-tracking-using-kalman-filter/
+6. https://www.udemy.com/course/advanced-kalman-filtering-and-sensor-fusion/
+7. https://www.youtube.com/watch?v=CaCcOwJPytQ&list=PLX2gX-ftPVXU3oUFNATxGXY90AULiqnWT&ab_channel=MichelvanBiezen
+8. https://www.kalmanfilter.net/default.aspx
+9. https://www.alanzucconi.com/2022/07/24/kalman-filter-3/
+10. https://machinelearningspace.com/2d-object-tracking-using-kalman-filter/
 
