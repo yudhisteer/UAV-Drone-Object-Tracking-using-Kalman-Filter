@@ -349,45 +349,47 @@ To sum up, we now have ```2``` Gaussian blobs:
   <img src= "https://user-images.githubusercontent.com/59663734/227800582-45f60f77-d2ff-4825-88f7-ef8c8d50a86b.png" width="700" height="160"/>
 </p>
 
-
+--------------
+                                                                                                                                            
 ### 1.9 Gaussian Multiplication
 As explained above, if we multiply two Gaussian distributions, our output will still be a Gaussian distribution. We will have something like this:
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/b33d0a4a-2668-4ad0-acf5-a158637a38b5"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/e28ba619-4a84-4c0d-a47f-c0c5b4f6761f"/>
 </p>
 
 After some simplication, our new mean can be expressed as:
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/c1a93fa9-9363-4d8a-9036-ef3732f51fc5"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/d862d849-7fc7-41a8-93fd-d944b1437228"/>
 </p>
 
 and the new variance as:
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/8fd766b8-32e1-4857-8b1a-e419aa0b5140"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/7f72f9ae-27dd-4d3a-83a2-b8153a721f1a"/>
 </p>
 
 We can factor out ```k``` where k: 
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/eb60dce7-33ee-449f-80db-90909ba1f6c4"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/b507b7e9-3cf2-4fcf-98d9-30cd43793f9b"/>
 </p>
+                                                                                                                                              
 Hence, re-writing the new mean and new covariance:
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/8491bc45-1e0a-4592-bb7a-0e571aaa2be0"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/bbdb91f2-ad97-4981-afcf-ca49aca4d14e"/>
 </p>
 
 Re-wrting them in matrix form:
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/211b102d-53c8-4571-a7f8-f4ca1d44eb76"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/291c837d-54c7-42f0-b109-d47a1417d5e6"/>
 </p>
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/9ba37c3f-981d-44af-a50f-37bedd0cd1a5"/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/0ce857b1-a27d-43b4-adf9-904a861c87b9"/>
 </p>
 
 Note that ```K``` is the **Kalman Gain** which is the ```ratio``` of the covariance of the predicted state estimate to the sum of the covariance of the predicted state estimate and the covariance of the measurement. 
