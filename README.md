@@ -7,7 +7,7 @@ The drone is already equipped with a range of sensors such as  a```Lidar```, a `
 
 While computer vision-based tracking algorithms have been widely used, it's important to consider the challenges posed by urban delivery environments. In city settings, the presence of obstructions such as trees, electric poles, and buildings can hinder the effectiveness of computer vision alone. Additionally, the dynamic nature of urban environments introduces a multitude of moving objects that need to be accounted for. To ensure safe and reliable operations, it is crucial for our tracking system to be capable of accurately detecting and tracking not only stationary objects but also individuals or animals approaching the drone's landing position, as they pose a significant risk of collision with the drone or the package it carries.
 
-https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/44df3b47-8525-4a69-a9f3-a76c98d714fa
+https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/8fd6dc9d-2e75-4e52-bf7d-e8813c3ee278
 
 
 ## Abstract
@@ -713,7 +713,11 @@ https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/asse
 - The estimate catches up quicker with the true state in the corners.
 - The state estimates follow the GPS measurements a lot more. It is going to trust them a lot more because it got less uncertainty inside the prediction model.
 
-https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/91f12a56-d636-40cf-8d76-d1de009173c6
+    
+
+https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/eea33ab5-2d37-487b-9fc8-93249863a7b4
+
+                                                                                                                                          
 
 In summary:
 
@@ -783,13 +787,14 @@ We check first if there is a bounding box, if there is we perform the predict fu
 
 Below are two examples where the object changes direction abruptly. This is a good example to see how our Linear Kalman Filter is performing on a dynamic non-linear system. We observe that there is still a discrepancy between the true value and the estimated one. This is because of the process model we are using which is a linear model. 
 
-
-https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/f67b1de5-7b44-42dc-9ac0-1807c91453ba
+https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/08dff052-36fb-4fcb-917e-61aec04c55ab
 
 
 By increasing the ACCEL_STD to a high value, we rely much more on the detector than our process model. This is working fine for now however, if the detector wrongly detects the position of the object then our estimates will be off from the true value as well.
 
-https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/59bbe596-be85-4b60-a6f7-6310d459c1b0
+
+https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/ffe3bc9a-17b4-4c1a-9f15-c01652635657
+
 
 ### Conclusion
 
