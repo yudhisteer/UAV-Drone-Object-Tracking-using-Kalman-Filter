@@ -9,14 +9,10 @@ The drone is equipped with RGB camera and Stereo camera. Utilizing the data coll
 While computer vision-based tracking algorithms have been widely used, it's important to consider the challenges posed by urban delivery environments. In city settings, the presence of obstructions such as trees, electric poles, and buildings can hinder the effectiveness of computer vision alone. Additionally, the dynamic nature of urban environments introduces a multitude of moving objects that need to be accounted for. To ensure safe and reliable operations, it is crucial for our tracking system to be capable of accurately detecting and tracking not only stationary objects but also individuals or animals approaching the drone's landing position, as they pose a significant risk of collision with the drone or the package it carries.
 
 
-<!-- https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/185ab3fe-8e05-4ea2-8f97-edfbec99ddea -->
-
+<!-- https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/185ab3fe-8e05-4ea2-8f97-edfbec99ddea
+ -->
+ 
 In the video below, an obstructed object is shown where YOLOv8 fails to detect it. However, utilizing the Kalman Filter, we are still able to predict the future states of the object by leveraging the Process model and the current states.
-
-
-
-https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/2c0183d0-3c82-491d-a660-906890bf7dbc
-
 
 
 
