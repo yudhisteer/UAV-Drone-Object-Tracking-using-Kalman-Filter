@@ -30,20 +30,18 @@ Brian Douglas's blog, Bzarg's online tutorial, and Dr. Steven Dumble's course pr
 
 ## Plan of Action
 
-<a name="basics-of-kalman-filter"></a>
-1. Basics of Kalman Filter
+1. [Basics of Kalman Filter](#basics-of-kalman-filter)
 
-<a name="kalman-filter-implementation"></a>
-2. Kalman Filter Implementation
+2. [Kalman Filter Implementation]((#kalman-filter-implementation))
 
-3. Autonomous Car Tracking
+3. [Autonomous Car Tracking](autonomous-car-tracking)
 
-4. UAV Object Tracking
+4. [UAV Object Tracking](uav-object-tracking)
 
 ----------
 
-
-## [1. Basics of Kalman Filter](#basics-of-kalman-filter)
+<a name="basics-of-kalman-filter"></a>
+## 1. Basics of Kalman Filter
 
 ### 1.1 The Origin
 The Kalman Filter was invented by the great ```Rudolf E. Kálmán``` who received the **National Medal of Science** on Oct. 7, 2009, from President Barack Obama at the White House. Kalman filters were first used during the **Apollo space program** that put men on the moon, in the **NASA Space Shuttle**, in **U.S. Navy submarines**, and in **unmanned aerospace vehicles** and **weapons**.
@@ -486,7 +484,7 @@ Note that ![242158558-1854582f-f5d7-4a19-85c6-4e05637d46f3](https://github.com/y
 
 
 
-## 2. [Kalman Filter Implementation](#kalman-filter-implementation)
+## 2. Kalman Filter Implementation
 
 We will now code our Kalman Filter from scratch. We start with a KalmanFilter class and define the following parameters in the __ init __ function:
 
@@ -623,7 +621,8 @@ In the **update function**, we calculate the Kalman gain ![242318987-3c6bd5db-d3
         return self.x
 ```
 ----------------------------
-
+                                                                                                                                              
+<a name=""autonomous-car-tracking"></a>
 ## 3. Autonomous Vehicle Tracking
 
 Now we need to test if our implementation really works. Consider an autonomous vehicle starting at position ```(0,0)``` travelling at a constant speed of ```5 m/s``` with a heading of ```45``` degrees. We have a GPS tracking the x and y position of the vehicle.
@@ -743,6 +742,7 @@ In summary:
 
 ------------------------
 
+<a name=""uav-object-tracking"></a>
 ## 4. UAV Object Tracking
 Kalman filters are used to track the positions and velocities of objects of interest, such as other vehicles, pedestrians, or stationary obstacles. By fusing data from different sensors, such as cameras, the filter estimates the object's state with high accuracy, even in the presence of sensor noise or measurement uncertainties. This tracking information is crucial for collision avoidance as it allows the drone to perceive the current and future positions of objects in its environment.
 
