@@ -32,7 +32,7 @@ Brian Douglas's blog, Bzarg's online tutorial, and Dr. Steven Dumble's course pr
 
 1. [Basics of Kalman Filter](#basics-of-kalman-filter)
 
-2. [Kalman Filter Implementation]((#kalman-filter-implementation))
+2. [Kalman Filter Implementation](#kalman-filter-implementation)
 
 3. [Autonomous Car Tracking](autonomous-car-tracking)
 
