@@ -34,9 +34,9 @@ Brian Douglas's blog, Bzarg's online tutorial, and Dr. Steven Dumble's course pr
 
 2. [Kalman Filter Implementation](#kalman-filter-implementation)
 
-3. [Autonomous Car Tracking](autonomous-car-tracking)
+3. [Autonomous Car Tracking](#autonomous-vehicle-tracking)
 
-4. [UAV Object Tracking](uav-object-tracking)
+4. [UAV Object Tracking](#uav-object-tracking)
 
 ----------
 
@@ -622,7 +622,7 @@ In the **update function**, we calculate the Kalman gain ![242318987-3c6bd5db-d3
 ```
 ----------------------------
                                                                                                                                               
-<a name="autonomous-car-tracking"></a>
+<a name="autonomous-vehicle-tracking"></a>
 ## 3. Autonomous Vehicle Tracking
 
 Now we need to test if our implementation really works. Consider an autonomous vehicle starting at position ```(0,0)``` travelling at a constant speed of ```5 m/s``` with a heading of ```45``` degrees. We have a GPS tracking the x and y position of the vehicle.
