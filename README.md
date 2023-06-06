@@ -20,17 +20,17 @@ https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/asse
 
 
 
-
-
 ## Abstract
 This project involved designing and implementing a linear Kalman filter from scratch to track both stationary objects and moving entities, such as individuals or animals, near the drone's landing position. Real-world testing demonstrated the filter's effectiveness in providing accurate position and velocity estimates, reducing the risk of collision. However, limitations were observed in handling non-linear dynamics and uncertainties. It was concluded that non-linear Kalman filters, like the **Extended Kalman Filter** or **Unscented Kalman Filter**, would be more suitable for complex scenarios. Further research on non-linear Kalman filters is recommended to improve tracking accuracy and robustness in dynamic environments.
 
 Brian Douglas's blog, Bzarg's online tutorial, and Dr. Steven Dumble's course provided essential guidance and insights on Kalman filters and tracking algorithms. Their resources greatly influenced my understanding and implementation of the Kalman filter, enhancing the success of this project. I sincerely appreciate their valuable contributions and acknowledge their significant impact on my work. Some of the graphs and visualization has been adapted from their work.
 
+
 ----------
 
 ## Plan of Action
 
+<a name="basics-of-kalman-filter"></a>
 1. Basics of Kalman Filter
 
 2. Kalman Filter Implementation
@@ -42,7 +42,7 @@ Brian Douglas's blog, Bzarg's online tutorial, and Dr. Steven Dumble's course pr
 ----------
 
 
-## 1. Basics of Kalman Filter
+## [1. Basics of Kalman Filter](#basics-of-kalman-filter)
 
 ### 1.1 The Origin
 The Kalman Filter was invented by the great ```Rudolf E. Kálmán``` who received the **National Medal of Science** on Oct. 7, 2009, from President Barack Obama at the White House. Kalman filters were first used during the **Apollo space program** that put men on the moon, in the **NASA Space Shuttle**, in **U.S. Navy submarines**, and in **unmanned aerospace vehicles** and **weapons**.
