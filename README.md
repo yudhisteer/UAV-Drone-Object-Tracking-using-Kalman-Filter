@@ -483,7 +483,7 @@ Note that ![242158558-1854582f-f5d7-4a19-85c6-4e05637d46f3](https://github.com/y
 </p>
 
 
-
+<a name="kalman-filter-implementation"></a>
 ## 2. Kalman Filter Implementation
 
 We will now code our Kalman Filter from scratch. We start with a KalmanFilter class and define the following parameters in the __ init __ function:
