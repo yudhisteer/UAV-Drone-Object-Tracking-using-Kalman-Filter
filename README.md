@@ -622,7 +622,7 @@ In the **update function**, we calculate the Kalman gain ![242318987-3c6bd5db-d3
 ```
 ----------------------------
                                                                                                                                               
-<a name=""autonomous-car-tracking"></a>
+<a name="autonomous-car-tracking"></a>
 ## 3. Autonomous Vehicle Tracking
 
 Now we need to test if our implementation really works. Consider an autonomous vehicle starting at position ```(0,0)``` travelling at a constant speed of ```5 m/s``` with a heading of ```45``` degrees. We have a GPS tracking the x and y position of the vehicle.
@@ -742,7 +742,7 @@ In summary:
 
 ------------------------
 
-<a name=""uav-object-tracking"></a>
+<a name="uav-object-tracking"></a>
 ## 4. UAV Object Tracking
 Kalman filters are used to track the positions and velocities of objects of interest, such as other vehicles, pedestrians, or stationary obstacles. By fusing data from different sensors, such as cameras, the filter estimates the object's state with high accuracy, even in the presence of sensor noise or measurement uncertainties. This tracking information is crucial for collision avoidance as it allows the drone to perceive the current and future positions of objects in its environment.
 
