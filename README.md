@@ -822,16 +822,24 @@ In addition, while the linear Kalman filter has provided satisfactory results, i
 
 
 ## References
+[1] Engineering Media. (n.d.). The Kalman Filter. [Webpage]. https://engineeringmedia.com/controlblog/the-kalman-filter
 
-1. https://engineeringmedia.com/controlblog/the-kalman-filter
-2. https://www.bzarg.com/p/how-a-kalman-filter-works-in-pictures/
-3. https://www.youtube.com/watch?v=mwn8xhgNpFY&list=PLn8PRpmsu08pzi6EMiYnR-076Mh-q3tWr&ab_channel=MATLAB
-4. https://www.mathworks.com/videos/series/understanding-kalman-filters.html
-5. https://arshren.medium.com/an-easy-explanation-of-kalman-filter-ec2ccb759c46
-6. https://www.udemy.com/course/advanced-kalman-filtering-and-sensor-fusion/
-7. https://www.youtube.com/watch?v=CaCcOwJPytQ&list=PLX2gX-ftPVXU3oUFNATxGXY90AULiqnWT&ab_channel=MichelvanBiezen
-8. https://www.kalmanfilter.net/default.aspx
-9. https://www.alanzucconi.com/2022/07/24/kalman-filter-3/
-10. https://machinelearningspace.com/2d-object-tracking-using-kalman-filter/
-11. https://towardsdatascience.com/kalman-filter-interview-bdc39f3e6cf3
-                            
+[2] Bzarg, C. (n.d.). How a Kalman Filter Works in Pictures. [Webpage]. https://www.bzarg.com/p/how-a-kalman-filter-works-in-pictures/
+
+[3] MATLAB. (n.d.). Kalman Filters and Control. [YouTube playlist]. https://www.youtube.com/watch?v=mwn8xhgNpFY&list=PLn8PRpmsu08pzi6EMiYnR-076Mh-q3tWr&ab_channel=MATLAB
+
+[4] MathWorks. (n.d.). Understanding Kalman Filters. [Video series]. https://www.mathworks.com/videos/series/understanding-kalman-filters.html
+
+[5] Arshren. (n.d.). An Easy Explanation of Kalman Filter. [Webpage]. https://arshren.medium.com/an-easy-explanation-of-kalman-filter-ec2ccb759c46
+
+[6] Udemy. (n.d.). Advanced Kalman Filtering and Sensor Fusion. [Course]. https://www.udemy.com/course/advanced-kalman-filtering-and-sensor-fusion/
+
+[7] Michel van Biezen. (n.d.). Kalman Filter Lectures. [YouTube playlist]. https://www.youtube.com/watch?v=CaCcOwJPytQ&list=PLX2gX-ftPVXU3oUFNATxGXY90AULiqnWT&ab_channel=MichelvanBiezen
+
+[8] Kalman Filter. (n.d.). [Website]. https://www.kalmanfilter.net/default.aspx
+
+[9] Zucconi, A. (2022, July 24). Kalman Filter [Part 3]. [Webpage]. https://www.alanzucconi.com/2022/07/24/kalman-filter-3/
+
+[10] Machine Learning Space. (n.d.). 2D Object Tracking using Kalman Filter. [Webpage]. https://machinelearningspace.com/2d-object-tracking-using-kalman-filter/
+
+[11] Towards Data Science. (n.d.). Kalman Filter Interview. [Webpage]. https://towardsdatascience.com/kalman-filter-interview-bdc39f3e6cf3
