@@ -16,7 +16,8 @@ In the video below, an obstructed object is shown where YOLOv8 fails to detect i
 
 
 
-https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/c17304b6-4e4c-481d-a881-63331c907699
+<video src="https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/c17304b6-4e4c-481d-a881-63331c907699" controls="controls" style="max-width: 730px;">
+</video>
 
 
 
@@ -704,7 +705,8 @@ Now, we will test our filter using the simulation created by Dr. Steven Dumble i
 - By having zero process model noise, the filter is going to become inconsistent because the estimated position is not close to the true position.
 
 
-https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/c0c84391-03b8-46ae-be5f-627c7ccf997b
+<video src="https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/c0c84391-03b8-46ae-be5f-627c7ccf997b" controls="controls" style="max-width: 730px;">
+</video>
 
 
 **2. ACCEL_STD = 0.1**
@@ -715,7 +717,8 @@ https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/asse
 - That is, the estimates are going to rely on the GPS measurements more than the process model.
 
 
-https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/306f85db-1b73-4748-949a-c3e976cd6c4d
+<video src="https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/306f85db-1b73-4748-949a-c3e976cd6c4d" controls="controls" style="max-width: 730px;">
+</video>
 
 
 **3. ACCEL_STD = 1.0**
@@ -726,7 +729,8 @@ https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/asse
 
     
 
-https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/eea33ab5-2d37-487b-9fc8-93249863a7b4
+<video src="https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/eea33ab5-2d37-487b-9fc8-93249863a7b4" controls="controls" style="max-width: 730px;">
+</video>
 
                                                                                                                                           
 
@@ -799,13 +803,15 @@ We check first if there is a bounding box, if there is we perform the predict fu
 
 Below are two examples where the object changes direction abruptly. This is a good example to see how our Linear Kalman Filter is performing on a dynamic non-linear system. We observe that there is still a discrepancy between the true value and the estimated one. This is because of the process model we are using which is a linear model. 
 
-https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/08dff052-36fb-4fcb-917e-61aec04c55ab
+<video src="https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/08dff052-36fb-4fcb-917e-61aec04c55ab" controls="controls" style="max-width: 730px;">
+</video>
 
 
 By increasing the ACCEL_STD to a high value, we rely much more on the detector than our process model. This is working fine for now however, if the detector wrongly detects the position of the object then our estimates will be off from the true value as well.
 
 
-https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/ffe3bc9a-17b4-4c1a-9f15-c01652635657
+<video src="https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/ffe3bc9a-17b4-4c1a-9f15-c01652635657" controls="controls" style="max-width: 730px;">
+</video>
 
 
 ### Conclusion
