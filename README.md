@@ -50,6 +50,10 @@ The Kalman Filter was invented by the great ```Rudolf E. Kálmán``` who receive
 <p align="center">
   <img src= "https://user-images.githubusercontent.com/59663734/227087845-8ff20652-62aa-4df9-a3bb-2439f3c0f171.jpg" width="450" height="300"/>
 </p>
+<div align="center">
+    <p>Image Source: <a href="https://www.gainesville.com/story/news/2009/10/08/obama-honors-former-uf-professor-with-science-medal/31724964007/">Obama honors former UF professor with science medal</a></p>
+</div>
+
 
 ### 1.2 The Purpose
 Let's see at examples of why we may need Kalman Filters. 
