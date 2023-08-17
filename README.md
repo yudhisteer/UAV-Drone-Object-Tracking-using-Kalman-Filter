@@ -67,7 +67,7 @@ Let's see at examples of why we may need Kalman Filters.
 ### 1.3 Types of Kalman Filter
 The choice of the filter depends on the specific characteristics of the system being modeled and the accuracy requirements of the application. In some cases, it may be necessary to perform experiments or simulations to determine which filter performs best for a given situation.
 
- #### Linear Kalman Filter
+ ### Linear Kalman Filter
 
 - Assumes the system dynamics and measurement models are linear.
 - Updates the state estimate and covariance directly using linear equations.
@@ -75,7 +75,7 @@ The choice of the filter depends on the specific characteristics of the system b
 - Widely used in applications such as tracking, navigation, and control systems.
  
  
- #### Extenden Kalman Filter
+ ###  Extenden Kalman Filter
 
 - Extends the linear Kalman filter to handle nonlinear system dynamics and/or measurement models.
 - Approximates the nonlinear models using a first-order Taylor series expansion.
@@ -84,7 +84,7 @@ The choice of the filter depends on the specific characteristics of the system b
 - Commonly used in applications such as robotics, autonomous vehicles, and aerospace systems.
  
  
- #### Unscented Kalman Filter
+ ###  Unscented Kalman Filter
 
 - Overcomes the need for linearization in the EKF by using a deterministic sampling-based approach.
 - Represents the probability distribution of the state using a set of sigma points.
