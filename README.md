@@ -285,7 +285,7 @@ The new **Prediction Error Covariance Matrix** ![CodeCogsEqn (16)](https://user-
 where:
 
 <p align="center">
-  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/7b8f1d6e-f9ad-41b7-9292-1da2cbee9518""/>
+  <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/7b8f1d6e-f9ad-41b7-9292-1da2cbee9518"/>
 </p>
 
 where 
