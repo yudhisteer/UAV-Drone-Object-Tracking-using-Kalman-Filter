@@ -307,7 +307,7 @@ This additional uncertainty is modelled by the **Process Noise Covariance Matrix
 
 To sum up:
 
-1. The new best estiate is a prediction model from the previous best estimate  ```+``` a correction for known external influences.
+1. The new best estimate is a prediction model from the previous best estimate  ```+``` a correction for known external influences.
 2. The new uncertainty is predicted from the old uncertainty ```+``` additional uncertainty from the environment.
 
 <p align="center">
