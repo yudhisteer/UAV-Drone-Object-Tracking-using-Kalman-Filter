@@ -2,9 +2,9 @@
 
 ## Problem Statement
 
-In our scenario, we have a drone that is engaged in delivering packages within a bustling urban environment. Unlike other existing systems in the market where packages are dropped from above using ```parachutes```, our innovative approach employs a ```cord mechanism```. This cord is securely attached to the package and is gradually lowered once the drone reaches its destination. While this novel system offers enhanced user experience and prioritizes the well-being of all involved parties, it does come with a potential **drawback**. There is a possibility that an individual or an animal, either intentionally or unintentionally, may pull or trip on the attached cord. Such an action poses **risks** to both the user and the drone, potentially leading to **injuries** in certain circumstances.
+In our scenario, we have a drone that is engaged in delivering packages within a bustling urban environment. Unlike other existing systems in the market where packages are dropped from above using ```parachutes```, our innovative approach employs a ```cord mechanism```. This cord is securely attached to the package and is gradually lowered once the drone reaches its destination. While this novel system offers an enhanced user experience and prioritizes the well-being of all involved parties, it does come with a potential **drawback**. There is a possibility that an individual or an animal, either intentionally or unintentionally, may pull or trip on the attached cord. Such an action poses **risks** to both the user and the drone, potentially leading to **injuries** in certain circumstances.
 
-The drone is equipped with RGB camera and Stereo camera. Utilizing the data collected by these cameras, we can develop a sophisticated tracking system. This system will enable the drone to safely lower the package to the ground, ensuring that it does so only when it predicts a **minimal risk** of the cord being pulled. By analyzing the camera data, the tracking system will be capable of identifying and tracking individuals or animals that are in close proximity to the intended landing position of the drone's package. This proactive approach will allow the drone to avoid potential risks and ensure the ```safe delivery``` of packages without endangering users or causing harm to surrounding individuals or animals.
+The drone is equipped with an RGB camera and a Stereo camera. Utilizing the data collected by these cameras, we can develop a sophisticated tracking system. This system will enable the drone to safely lower the package to the ground, ensuring that it does so only when it predicts a **minimal risk** of the cord being pulled. By analyzing the camera data, the tracking system will be capable of identifying and tracking individuals or animals that are in close proximity to the intended landing position of the drone's package. This proactive approach will allow the drone to avoid potential risks and ensure the ```safe delivery``` of packages without endangering users or causing harm to surrounding individuals or animals.
 
 While computer vision-based tracking algorithms have been widely used, it's important to consider the challenges posed by urban delivery environments. In city settings, the presence of obstructions such as trees, electric poles, and buildings can hinder the effectiveness of computer vision alone. Additionally, the dynamic nature of urban environments introduces a multitude of moving objects that need to be accounted for. To ensure safe and reliable operations, it is crucial for our tracking system to be capable of accurately detecting and tracking not only stationary objects but also individuals or animals approaching the drone's landing position, as they pose a significant risk of collision with the drone or the package it carries.
 
@@ -24,7 +24,7 @@ In the video below, an obstructed object is shown where YOLOv8 fails to detect i
 ## Abstract
 This project involved designing and implementing a linear Kalman filter from scratch to track both stationary objects and moving entities, such as individuals or animals, near the drone's landing position. Real-world testing demonstrated the filter's effectiveness in providing accurate position and velocity estimates, reducing the risk of collision. However, limitations were observed in handling non-linear dynamics and uncertainties. It was concluded that non-linear Kalman filters, like the **Extended Kalman Filter** or **Unscented Kalman Filter**, would be more suitable for complex scenarios. Further research on non-linear Kalman filters is recommended to improve tracking accuracy and robustness in dynamic environments.
 
-Brian Douglas's blog, Bzarg's online tutorial, and Dr. Steven Dumble's course provided essential guidance and insights on Kalman filters and tracking algorithms. Their resources greatly influenced my understanding and implementation of the Kalman filter, enhancing the success of this project. I sincerely appreciate their valuable contributions and acknowledge their significant impact on my work. Some of the graphs and visualization has been adapted from their work.
+Brian Douglas's blog, Bzarg's online tutorial, and Dr. Steven Dumble's course provided essential guidance and insights on Kalman filters and tracking algorithms. Their resources greatly influenced my understanding and implementation of the Kalman filter, enhancing the success of this project. I sincerely appreciate their valuable contributions and acknowledge their significant impact on my work. Some of the graphs and visualization have been adapted from their work.
 
 
 ----------
@@ -45,7 +45,7 @@ Brian Douglas's blog, Bzarg's online tutorial, and Dr. Steven Dumble's course pr
 ## 1. Basics of Kalman Filter
 
 ### 1.1 The Origin
-The Kalman Filter was invented by the great ```Rudolf E. Kálmán``` who received the **National Medal of Science** on Oct. 7, 2009, from President Barack Obama at the White House. Kalman filters were first used during the **Apollo space program** that put men on the moon, in the **NASA Space Shuttle**, in **U.S. Navy submarines**, and in **unmanned aerospace vehicles** and **weapons**.
+The Kalman Filter was invented by the great ```Rudolf E. Kálmán``` who received the **National Medal of Science** on Oct. 7, 2009, from President Barack Obama at the White House. Kalman filters were first used during the **Apollo space program** that put men on the moon, in the **NASA Space Shuttle**, **U.S. Navy submarines**, and in **unmanned aerospace vehicles** and **weapons**.
 
 <p align="center">
   <img src= "https://user-images.githubusercontent.com/59663734/227087845-8ff20652-62aa-4df9-a3bb-2439f3c0f171.jpg" width="450" height="300"/>
@@ -56,11 +56,11 @@ The Kalman Filter was invented by the great ```Rudolf E. Kálmán``` who receive
 
 
 ### 1.2 The Purpose
-Let's see at examples of why we may need Kalman Filters. 
+Let's see examples of why we may need Kalman Filters. 
 
-**Example 1**: We need to measure the internal temperature of a core reactor of a nuclear power plant. You may guess that we cannot put any type of sensors directly into the core as they will melt instantaneously. The best we can do is measure external tempeature outside the core and then use a Kalman Filter to find the best estimate of the internal temperature from an indirect measurement. That is, we use a Kalman Filter when ```we cannot measure directly the variables of interest```.
+**Example 1**: We need to measure the internal temperature of a core reactor of a nuclear power plant. You may guess that we cannot put any type of sensors directly into the core as they will melt instantaneously. The best we can do is measure external temperature outside the core and then use a Kalman Filter to find the best estimate of the internal temperature from an indirect measurement. That is, we use a Kalman Filter when ```we cannot measure directly the variables of interest```.
 
-**Example 2**: Suppose we want to track the location of our drone at a specific time ```t```. We may use the a **GPS** to do so but the precision may differ based on the number of satellites available and other factors. We may use the onboard **IMU** sensor to deduce the distance travelled but our sensor can be ```noisy```. So what we can so is to ```fuse``` both sensors measurements to find the optimal estimate of the exact location of our drone. That is, we use Kalman Filter when we want to find ```the best estimate of states by combining measurements from various sensors in the presence of noise```.
+**Example 2**: Suppose we want to track the location of our drone at a specific time ```t```. We may use the a **GPS** to do so but the precision may differ based on the number of satellites available and other factors. We may use the onboard **IMU** sensor to deduce the distance traveled but our sensor can be ```noisy```. So what we can do is ```fuse``` both sensors' measurements to find the optimal estimate of the exact location of our drone. That is, we use Kalman Filter when we want to find ```the best estimate of states by combining measurements from various sensors in the presence of noise```.
 
 ```To put it simply, our aim is to determine the current state of the system by considering both its underlying dynamics and the presence of imperfect measurements.```
 
@@ -93,9 +93,9 @@ The choice of the filter depends on the specific characteristics of the system b
 - Suitable for applications where the system dynamics are highly nonlinear and/or the EKF fails to provide accurate results due to significant nonlinearities in the system.
 
 ### 1.4 The States
-Kalman Filter (KF) are ideal for systems which are ```continuously changing```. Why? Because KF keep only the ```previous state``` hence, they are fast and well-suited for ```real-time problems```. 
+Kalman Filter (KF) are ideal for systems that are ```continuously changing```. Why? Because KF keeps only the ```previous state``` hence, they are fast and well-suited for ```real-time problems```. 
 
-So what is this ```"state"``` term? The state is the **underlying configuration** of our system. It can be the ```position```, ```velocity```, ```volume```, ```temperature``` and so on of our system. We will take example of our drone which has two states: **position** and **velocity**. And it will be represented in a ```state vector```. 
+So what is this ```"state"``` term? The state is the **underlying configuration** of our system. It can be the ```position```, ```velocity```, ```volume```, ```temperature``` and so on of our system. We will take the example of our drone which has two states: **position** and **velocity**. And it will be represented in a ```state vector```. 
 
 <p align="center">
   <img src= "https://user-images.githubusercontent.com/59663734/227746812-5be18f7e-769a-4a39-b55a-2fa9c413bc73.png"/>
@@ -107,7 +107,7 @@ Now that we know what are states, let's define the steps of a KF. In a nutshell,
   <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/f0ed980d-9063-44d9-a8b8-6c67fe037380" width="750" height="250"/>
 </p>
 
-Suppose we want to track the position of our drone at time ```t```. Our GPS and other sensors have **noise** hence, will not provide an accurate result. But what if we can provide a ```mathematical model``` of our system. With Newton's Equation of Motion we can predict at time ```t+1``` what will be the position of our drone using its velocity. However, this will be a flawed model as we are not taking into account **external factors** such as wind resistance, snow, rain and so on. Hence, this is a ```flawed model```. In summary we have a sensor with **uncertainty** and a mathematical model with its own **uncertainty**. What if we could **combine both**? And that is exactly what the Kalman Filter does.
+Suppose we want to track the position of our drone at time ```t```. Our GPS and other sensors have **noise** hence, will not provide an accurate result. But what if we can provide a ```mathematical model``` of our system? With Newton's Equation of Motion, we can predict at time ```t+1``` what will be the position of our drone using its velocity. However, this will be a flawed model as we are not taking into account **external factors** such as wind resistance, snow, rain, and so on. Hence, this is a ```flawed model```. In summary, we have a sensor with **uncertainty** and a mathematical model with its own **uncertainty**. What if we could **combine both**? And that is exactly what the Kalman Filter does.
 
 <p align="center">
   <img src= "https://user-images.githubusercontent.com/59663734/227795840-0f3e94db-1ad8-4a7b-8364-c68bc89abf0e.png" width="460" height="150"/>
@@ -126,9 +126,9 @@ Suppose we want to track the position of our drone at time ```t```. Our GPS and 
   <img src= "https://user-images.githubusercontent.com/59663734/227746239-7e4262ad-888f-48b6-9125-4ee5175449a6.png" width="800" height="340"/>
 </p>
 
-Note that we do not know what is the **actual** positon and velocity due to the uncertainties. But we do know that there is a whole range of possible combinaties that may be true.
+Note that we do not know what is the **actual** position and velocity due to the uncertainties. But we do know that there is a whole range of possible combinations that may be true.
  
- One important **assumption** of KF is that it expect our variables to be ```random``` and ```Gaussian``` distributed. Hence, if we denote our variables using a state vector ```x```. Each variable has a **mean** and a **variance** such that:
+ One important **assumption** of KF is that it expects our variables to be ```random``` and ```Gaussian``` distributed. Hence, if we denote our variables using a state vector ```x```. Each variable has a **mean** and a **variance** such that:
 
 <p align="center">
   <img src= "https://user-images.githubusercontent.com/59663734/227746364-6a3ae6c7-2dee-450f-8fd8-7a46737f29ba.png"/>
@@ -144,14 +144,14 @@ A positive covariance indicates that the variables tend to increase or decrease 
 
 - The Kalman filter works by propagating the mean and covariance of the Gaussian distributions for the estimated state through time using a **linear process model**. This is known as the prediction step or process update, where the estimates move forward in time.
 
-- When measurements are available, which are a linear combination of the state, the Kalman filter updates the estimated state's mean and covariance based on the the measurements' mean and covariance of the Gaussian distribution. This is the update step or corrections step for the Kalman filter.
+- When measurements are available, which are a linear combination of the state, the Kalman filter updates the estimated state's mean and covariance based on the measurements' mean and covariance of the Gaussian distribution. This is the update step or corrections step for the Kalman filter.
 
 <p align="center">
   <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/bdc9e6a8-25f9-44d2-a650-8e891263024e" width="800" height="540"/>
 </p>
 
 - These two processes form the prediction and correction step, which is recursively run in the filter with time. The estimates are propagated forward in time to the current time.
-If the measurements information are available at the current time, it is used to improve the current state estimates. This is then repeated as time moves forward, 
+If the measurement information is available at the current time, it is used to improve the current state estimates. This is then repeated as time moves forward, 
 
 ---------------------------------------
 
@@ -220,7 +220,7 @@ The State Transition Matrix propagates the state at sample ```k-1```to the state
 
 Now we need to propagate the error covariance forward. Note that uncertainty comes from ```2``` sources when predicting:
 
-    1. Initial uncertainty in system before prediction
+    1. Initial uncertainty in the system before prediction
     2. Additional uncertainty as we propagate the state forward in time
 
 We will define the ```initial uncertainty``` first with ![CodeCogsEqn (16)](https://user-images.githubusercontent.com/59663734/227752062-7d98795d-a74d-4e2e-bf6b-900d0cd43d4d.png)
@@ -233,7 +233,7 @@ We will define the ```initial uncertainty``` first with ![CodeCogsEqn (16)](http
 Note that we use the State Transition Matrix F to propagate the initial error covariance.
 
 ### 1.6 Process Model: External Influence
-In the first part of our prediction model, we assumed a **constant velocity**. But that is not always the case in real-world. External forces may cause a system to accelerate. There may be changes that are not related to the state itself. Thus, we assume a **linear acceleration**.
+In the first part of our prediction model, we assumed a **constant velocity**. But that is not always the case in the real world. External forces may cause a system to accelerate. There may be changes that are not related to the state itself. Thus, we assume a **linear acceleration**.
 
 We use Newton's Equation of Motion to update our model:
 
@@ -241,7 +241,7 @@ We use Newton's Equation of Motion to update our model:
   <img src= "https://user-images.githubusercontent.com/59663734/227752300-584aa592-68e1-42b4-9c9e-9aece1a9a3b5.png"/>
 </p>
 
-Re-writting it in matrix form:
+Re-writing it in matrix form:
 
 <p align="center">
   <img src= "https://user-images.githubusercontent.com/59663734/227752403-ac80ac8c-1047-4606-821a-869eb718289f.png"/>
@@ -265,7 +265,7 @@ We then have:
 
 
 ### 1.7 Process Model: External Uncertainty
-It is impossible to model every external forces (friction, air resistance,...) acting on our system. In order to counter for that, we add some new uncertainty after every prediction step. We will model the **second** source of uncertainty into our system: ```uncertainty as we propagate the state forward in time```.
+It is impossible to model every external force (friction, air resistance,...) acting on our system. In order to counter that, we add some new uncertainty after every prediction step. We will model the **second** source of uncertainty into our system: ```uncertainty as we propagate the state forward in time```.
 
 <p align="center">
   <img src= "https://user-images.githubusercontent.com/59663734/227753050-b7eb3810-2031-4e86-9489-e7cfd6e118b9.png" width="400" height="300"/>
@@ -273,8 +273,8 @@ It is impossible to model every external forces (friction, air resistance,...) a
 
 
 - Each blue point in the diagram above can be our current state though it is most likely the actual state will be at the **center** of the Gaussian blob.
-- When predicting the next time step, a new **Gaussian** blob is created whereby each new green points can be the actual predicted state.
-- Each predicted point (green) has its own Gaussian blob, i.e, when we deal with **unobserved factors** that can impact the system's performance, we treat them as random disturbances or ```noise``` with a particular **covariance matrix**.
+- When predicting the next time step, a new **Gaussian** blob is created whereby each new green point can be the actual predicted state.
+- Each predicted point (green) has its own Gaussian blob, i.e., when we deal with **unobserved factors** that can impact the system's performance, we treat them as random disturbances or ```noise``` with a particular **covariance matrix**.
 
 The new **Prediction Error Covariance Matrix** ![CodeCogsEqn (16)](https://user-images.githubusercontent.com/59663734/227752062-7d98795d-a74d-4e2e-bf6b-900d0cd43d4d.png) is: 
 
@@ -318,13 +318,13 @@ To sum up:
 
 
 ### 1.8 Measurement: Noise & Estimate
-Recall that the Kalman Filter will combine measurements from a **noisy sensor** and the **prediction of a flawed model** to get a more accurate estimate of the system state than either one independently. What we have done since now is building a mathematical model in order to predict the next state of our system. What we will do now, is take readings from our sensor in order to get a ```measurement estimate```.
+Recall that the Kalman Filter will combine measurements from a **noisy sensor** and the **prediction of a flawed model** to get a more accurate estimate of the system state than either one independently. What we have done since then is build a mathematical model in order to predict the next state of our system. What we will do now, is take readings from our sensor in order to get a ```measurement estimate```.
 
 <p align="center">
   <img src= "https://user-images.githubusercontent.com/59663734/227795993-e89ba02b-17eb-4c05-95d2-46638e337fbe.png" width="460" height="140"/>
 </p>
 
-When we buy a sensor, the manufacturer tells us about the ```precision``` of the module. Precision is how close all the sensor readings are grouped to each other. When we need to measure distance using a laser for example, we cannot expect to get the same reading everytime we take a measurement with our sensor. There will be some small variations and this is due to ```random noise``` in the sensor. 
+When we buy a sensor, the manufacturer tells us about the ```precision``` of the module. Precision is how close all the sensor readings are grouped to each other. When we need to measure distance using a laser for example, we cannot expect to get the same reading every time we take a measurement with our sensor. There will be some small variations and this is due to ```random noise``` in the sensor. 
 
 One important factor is that the scale of readings from our sensor may not be of the same scale as the states we are measuring.  Hence, we’ll model the sensors with a matrix, ![CodeCogsEqn (26)](https://user-images.githubusercontent.com/59663734/227796992-96f8438a-2f93-42c1-824c-3c14ecd6bf8c.png). We can use this matrix to formulate a distribution of what our ```predicted measurement``` would be using the **next best estimate** + its **uncertainty** of our **prediction model**:
 
@@ -345,7 +345,7 @@ Note that ```P``` is rotated into the sensor frame using ```H```. As we analyze 
   <img src= "https://user-images.githubusercontent.com/59663734/227801851-53e36354-d682-4dae-a37d-e026bf815f6a.png" width="750" height="230"/>
 </p>
 
-From the diagram above, notice that how as we propagate further into the future our **Process Noise Covariance Matrix**, ![CodeCogsEqn (24)](https://user-images.githubusercontent.com/59663734/227754179-426ee4b2-400e-40c8-ad7f-53803289f3b0.png), grows bigger and bigger. In total, we have ```3``` error covariance matrices: ![CodeCogsEqn (33)](https://user-images.githubusercontent.com/59663734/227801696-c2b50054-c440-4c04-9300-b0da0e787fef.png), ![CodeCogsEqn (32)](https://user-images.githubusercontent.com/59663734/227801712-9bee671b-ecf0-40aa-b297-c719afb2febc.png), 
+From the diagram above, notice how as we propagate further into the future our **Process Noise Covariance Matrix**, ![CodeCogsEqn (24)](https://user-images.githubusercontent.com/59663734/227754179-426ee4b2-400e-40c8-ad7f-53803289f3b0.png), grows bigger and bigger. In total, we have ```3``` error covariance matrices: ![CodeCogsEqn (33)](https://user-images.githubusercontent.com/59663734/227801696-c2b50054-c440-4c04-9300-b0da0e787fef.png), ![CodeCogsEqn (32)](https://user-images.githubusercontent.com/59663734/227801712-9bee671b-ecf0-40aa-b297-c719afb2febc.png), 
 ![CodeCogsEqn (31)](https://user-images.githubusercontent.com/59663734/227801722-7d6cb918-9657-40c9-8a44-ea358e062373.png).
 
 
@@ -360,7 +360,7 @@ To sum up, we now have ```2``` Gaussian blobs:
 </p>
 
 - _Our next step will be to ```reconcile our guess``` about the readings we would see based on the **predicted state** with a different guess based on our **sensor readings** that we actually observe_.
--  _To find our ```new most likely state```, we simply need to **multiply** the two Gaussian distribution and the ouput will be another **Gaussian distribution** where the mean of this distribution is the configuration for which both estimates are **most likely**, and is therefore the **best guess** of the true configuration given all the information we have._
+-  _To find our ```new most likely state```, we simply need to **multiply** the two Gaussian distributions and the output will be another **Gaussian distribution** where the mean of this distribution is the configuration for which both estimates are **most likely**, and is, therefore, the **best guess** of the true configuration given all the information we have._
 
 <p align="center">
   <img src= "https://user-images.githubusercontent.com/59663734/227800582-45f60f77-d2ff-4825-88f7-ef8c8d50a86b.png" width="700" height="160"/>
@@ -375,7 +375,7 @@ As explained above, if we multiply two Gaussian distributions, our output will s
   <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/e28ba619-4a84-4c0d-a47f-c0c5b4f6761f"/>
 </p>
 
-After some simplication, our new mean can be expressed as:
+After some simplification, our new mean can be expressed as:
 
 <p align="center">
   <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/d862d849-7fc7-41a8-93fd-d944b1437228"/>
@@ -399,7 +399,7 @@ Hence, re-writing the new mean and new covariance:
   <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/bbdb91f2-ad97-4981-afcf-ca49aca4d14e"/>
 </p>
 
-Re-wrting them in matrix form:
+Re-writing them in matrix form:
 
 <p align="center">
   <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/291c837d-54c7-42f0-b109-d47a1417d5e6"/>
@@ -419,7 +419,7 @@ The Kalman gain ratio plays a crucial role in determining the **weight** given t
 ---------------------------------
 
 ### 2.0 Putting all together
-We have 2 Gaussian distributions: one for the process model and another for the meausrements:
+We have 2 Gaussian distributions: one for the process model and another for the measurements:
 
 <p align="center">
   <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/fde466c2-ea4c-43e0-b51b-052bf34435b9"/>
@@ -492,7 +492,7 @@ Note that ![242158558-1854582f-f5d7-4a19-85c6-4e05637d46f3](https://github.com/y
 <a name="kalman-filter-implementation"></a>
 ## 2. Kalman Filter Implementation
 
-We will now code our Kalman Filter from scratch. We start with a KalmanFilter class and define the following parameters in the __ init __ function:
+We will now code our Kalman Filter from scratch. We start with a Kalman filter class and define the following parameters in the __ init __ function:
 
 ```python
 class KalmanFilter(object):
@@ -514,7 +514,7 @@ We do not know our initial state hence, we declare it as zero values:
         self.x = np.zeros((4, 1))
 ```
 
-We want to initialize our covariance matrix based on the standard deviation of the posittion and velocity as such:
+We want to initialize our covariance matrix based on the standard deviation of the position and velocity as such:
 
 <p align="center">
   <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/a1811292-99d0-40d2-925a-8ba95655328d"/>
@@ -631,7 +631,7 @@ In the **update function**, we calculate the Kalman gain ![242318987-3c6bd5db-d3
 <a name="autonomous-vehicle-tracking"></a>
 ## 3. Autonomous Vehicle Tracking
 
-Now we need to test if our implementation really works. Consider an autonomous vehicle starting at position ```(0,0)``` travelling at a constant speed of ```5 m/s``` with a heading of ```45``` degrees. We have a GPS tracking the x and y position of the vehicle.
+Now we need to test if our implementation really works. Consider an autonomous vehicle starting at position ```(0,0)```traveling at a constant speed of ```5 m/s``` with a heading of ```45``` degrees. We have a GPS tracking the x and y positions of the vehicle.
 
 ```python
 # Car parameters
@@ -643,7 +643,7 @@ heading = 45.0  # degrees
 heading_rad = math.radians(heading)
 ```
 
-We calculate the true positions based on constant speed and heading and using a Gaussian distribution to generate the measurements.
+We calculate the true positions based on constant speed and heading and use a Gaussian distribution to generate the measurements.
 
 ```python
 # Calculate true positions based on constant speed and heading
@@ -689,11 +689,11 @@ for measurement in measurements.T:
     # Store the filtered state
     filtered_states.append(updated_state)
 
-# Convert filtered states to numpy array
+# Convert filtered states to NumPy array
 filtered_states = np.array(filtered_states).T
 ```
 
-We then plot our filtered or estimated states along with the true position and the measurements. We observe that initially our estimated states follow more the GPS measurements. But with time, it converges close to the true value even when the GPS measurements is off by a lot as indicated with the yellow arrows.
+We then plot our filtered or estimated states along with the true position and the measurements. We observe that initially, our estimated states follow the GPS measurements. But with time, it converges close to the true value even when the GPS measurements are off by a lot as indicated by the yellow arrows.
 
 <p align="center">
   <img src= "https://github.com/yudhisteer/UAV-Drone-Object-Tracking-using-Kalman-Filter/assets/59663734/4df703f4-9b6d-45d7-a5ed-bd3d60e51940"/>
@@ -706,7 +706,7 @@ Now, we will test our filter using the simulation created by Dr. Steven Dumble i
 
 - The position and velocity uncertainty starts to the true value.
 - The estimates are going to use the information contained inside the process model and converge to the truth.
-- However, this won't work if we have a more dynamic system where the car changes directon abruptly.
+- However, this won't work if we have a more dynamic system where the car changes direction abruptly.
 - By having zero process model noise, the filter is going to become inconsistent because the estimated position is not close to the true position.
 
 
@@ -728,7 +728,7 @@ Now, we will test our filter using the simulation created by Dr. Steven Dumble i
 
 **3. ACCEL_STD = 1.0**
 
-- We a higher ACCEL_STD, we have a larer uncertainty growth with time.
+- We have a higher ACCEL_STD, and we have a larger uncertainty growth with time.
 - The estimate catches up quicker with the true state in the corners.
 - The state estimates follow the GPS measurements a lot more. It is going to trust them a lot more because it got less uncertainty inside the prediction model.
 
@@ -745,9 +745,9 @@ In summary:
 
 2. If we want a nice smooth response that trusts the prediction model more, we want a lower noise value for the acceleration. (Lower Q)
 
-3. However, if the car changes direction a lot and we want the process model to try to keep up, we are going to need aa larger acceleration standard deviation to let the filter update quickly for the new response. (Higher Q)
+3. However, if the car changes direction a lot and we want the process model to try to keep up, we are going to need a larger acceleration standard deviation to let the filter update quickly for the new response. (Higher Q)
 
-4. We assumed the inital state to be zero however, we would also have waited for the first measurement. Either way, the Linear Kalman Filter will always be updating to minimize the estimation error. 
+4. We assumed the initial state to be zero however, we would also have waited for the first measurement. Either way, the Linear Kalman Filter will always be updated to minimize the estimation error. 
 
 ------------------------
 
@@ -762,7 +762,7 @@ In this scenario, we do not want to track the drone but instead people or animal
 </p>
 
 
-Using ```YOLOv8```, we will get the bounding box of the region of interest and consecutively its **center**. We will used the centers as GPS Measurements that we had in the simulation before. We will still use the same Process Model we designed and update our estimates based on the center of the bounding boxes. 
+Using ```YOLOv8```, we will get the bounding box of the region of interest and consecutively its **center**. We will use the centers as GPS Measurements that we had in the simulation before. We will still use the same Process Model we designed and update our estimates based on the center of the bounding boxes. 
 
 ```python
   # Process the frame to get bounding box centers
